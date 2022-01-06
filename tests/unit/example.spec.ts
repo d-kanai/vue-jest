@@ -1,9 +1,9 @@
 import { mount } from "@vue/test-utils";
-import Sample from '@/views/Sample.vue'
+import TodoList from '@/views/TodoList.vue'
 
-describe("Sample.vue", () => {
+describe("TodoList.vue", () => {
   it("xxx", () => {
-    const wrapper = mount(Sample)
-    expect(wrapper.text()).toMatch("Sample");
+    const wrapper = mount(TodoList)
+    expect(wrapper.text()).toMatch("todo item");
   });
 });
