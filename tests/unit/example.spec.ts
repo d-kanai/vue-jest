@@ -1,9 +1,9 @@
 import { mount } from "@vue/test-utils";
-import HelloWorld from "@/components/HelloWorld.vue";
+import Sample from '@/views/Sample.vue'
 
 describe("Sample.vue", () => {
-  it("xxx", () => {
-    const wrapper = mount(HelloWorld)
-    expect(wrapper.text()).toMatch("guide");
+  it("should show sample string", () => {
+    const wrapper = mount(Sample)
+    expect(wrapper.text()).toMatch("Sample");
   });
 });
