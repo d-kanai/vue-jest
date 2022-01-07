@@ -13,8 +13,8 @@ export default {
       todoList: []
     };
   },
-  created() {
-    this.todoList = getTodoList()
+  async created() {
+    this.todoList = await getTodoList()
   }
 };
 </script>
