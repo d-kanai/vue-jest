@@ -2,6 +2,11 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import TodoList from "../views/TodoList.vue";
 
 const routes: Array<RouteRecordRaw> = [
+  {
+    path: '/',
+    name: 'TodoList',
+    component: TodoList
+  }
 ];
 
 const router = createRouter({
