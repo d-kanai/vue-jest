@@ -1,6 +1,8 @@
 <template>
   <div>
-    <p v-for="todo in todoList" :key="todo.id">{{ todo.name }}</p>
+    <router-link to="/">
+      <p v-for="todo in todoList" :key="todo.id">{{ todo.name }}</p>
+    </router-link>
   </div>
 </template>
 
