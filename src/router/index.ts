@@ -3,15 +3,20 @@ import TodoList from "../views/TodoList.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'TodoList',
+    path: "/",
+    name: "TodoList",
+    component: TodoList
+  },
+  {
+    path: "/todo/:id",
+    name: "Todo",
     component: TodoList
   }
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
+  routes
 });
 
 export default router;
