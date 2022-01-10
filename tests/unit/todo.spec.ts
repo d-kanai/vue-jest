@@ -6,7 +6,8 @@ import { mountWithFlushPromise } from "./helper";
 function mockTodoListApi() {
   jest.spyOn(api, "getTodoList").mockResolvedValueOnce([
     { id: 1, name: "todo item" },
-    { id: 2, name: "todo item2" }
+    { id: 2, name: "todo item2" },
+    { id: 3, name: "clean room" }
   ]);
 }
 
