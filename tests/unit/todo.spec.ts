@@ -35,6 +35,6 @@ describe("TodoList.vue", () => {
     mockTodoListApi();
     //when
     const wrapper = await mountWithFlushPromise(TodoList);
-    wrapper.find('input').setValue('clean room')
+    await wrapper.find('input').setValue('clean room')
   });
 });
