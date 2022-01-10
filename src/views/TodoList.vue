@@ -24,8 +24,8 @@ export default {
   },
   async created() {
     this.todoList = await getTodoList();
-  }
-  , computed: {
+  },
+  computed: {
     searchedTodoList() {
       return this
         .todoList
