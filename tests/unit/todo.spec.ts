@@ -53,7 +53,7 @@ describe("TodoList.vue", () => {
   });
   it("update status", async () => {
     //given
-    mockTodoListApi();
+    const mockData = mockTodoListApi();
     const mockUpdateTodoStatusAPi = jest
       .spyOn(api, "updateTodoStatus")
     //when
@@ -63,6 +63,9 @@ describe("TodoList.vue", () => {
     //then
     const elem = checkbox.element as HTMLInputElement
     expect(elem.checked).toBe(true)
-    expect(mockUpdateTodoStatusAPi).toHaveBeenCalled()
+    expect(mockUpdateTodoStatusAPi).toHaveBeenCalledWith(
+      mockData[0].id,
+      true
+    )
   });
 });
