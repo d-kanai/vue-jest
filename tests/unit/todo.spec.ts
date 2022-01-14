@@ -60,7 +60,7 @@ describe("TodoList.vue", () => {
     const wrapper = await mountWithFlushPromise(TodoList);
     const checkbox = await wrapper.find('input[type="checkbox"]')
     await checkbox.trigger('click')
-    // //then
+    //then
     const elem = checkbox.element as HTMLInputElement
     expect(elem.checked).toBe(true)
     // expect(wrapper.text()).not.toMatch("todo item");
