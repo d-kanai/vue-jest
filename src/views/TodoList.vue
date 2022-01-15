@@ -3,11 +3,12 @@
     <div>
       <input name="searchWord" v-model="searchWord" />
       <div v-for="todo in searchedTodoList" :key="todo.id">
-        <input type="checkbox" v-model="todo.status" @change="this.updateStatus(todo)" />
-        <router-link
-          :to="{name: 'Todo', params: {id: todo.id}}"
-
-        >
+        <input
+          type="checkbox"
+          v-model="todo.status"
+          @change="this.updateStatus(todo)"
+        />
+        <router-link :to="{ name: 'Todo', params: { id: todo.id } }">
           <span>{{ todo.name }}</span>
         </router-link>
       </div>
@@ -22,7 +23,7 @@ export default {
   data() {
     return {
       todoList: [],
-      searchWord: ""
+      searchWord: "",
     };
   },
   async created() {
@@ -30,15 +31,16 @@ export default {
   },
   computed: {
     searchedTodoList() {
-      return this
-        .todoList
-        .filter(todo => todo.name.includes(this.searchWord));
-    }
-  }, methods: {
+      return this.todoList.filter((todo) =>
+        todo.name.includes(this.searchWord)
+      );
+    },
+  },
+  methods: {
     async updateStatus(todo) {
-      await updateTodoStatus(todo.id, todo.status)
-    }
-  }
+      await updateTodoStatus(todo.id, todo.status);
+    },
+  },
 };
 </script>
 
