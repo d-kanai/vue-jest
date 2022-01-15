@@ -2,24 +2,22 @@
   <div>
     <div>
       <input name="searchWord" v-model="searchWord" />
-      <div v-for="todo in searchedTodoList" :key="todo.id">
-        <input
-          type="checkbox"
-          v-model="todo.status"
-          @change="this.updateStatus(todo)"
-        />
-        <router-link :to="{ name: 'Todo', params: { id: todo.id } }">
-          <span>{{ todo.name }}</span>
-        </router-link>
-      </div>
+      <TodoListItem
+        v-for="todo in searchedTodoList"
+        :key="todo.id"
+        :todo="todo"
+        @updateStatus="updateStatus(todo)"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import { getTodoList, updateTodoStatus } from "@/apis/TodoApi";
+import TodoListItem from "@/views/TodoListItem";
 
 export default {
+  components: { TodoListItem },
   data() {
     return {
       todoList: [],
@@ -43,5 +41,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>
