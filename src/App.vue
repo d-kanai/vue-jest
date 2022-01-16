@@ -1,6 +1,7 @@
 <template>
   <div id="nav">
-    <router-link to="/todo/new"></router-link>
+    <router-link to="/">Todo List</router-link> |
+    <router-link to="/todo/new">New Todo</router-link>
   </div>
   <router-view />
 </template>
