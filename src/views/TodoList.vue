@@ -6,7 +6,8 @@
         v-for="todo in searchedTodoList"
         :key="todo.id"
         :todo="todo"
-        @updateStatus="updateStatus(todo)"
+        v-model="todo.status"
+        @updateStatus="updateStatus"
       />
     </div>
   </div>
