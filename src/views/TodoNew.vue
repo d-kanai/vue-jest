@@ -1,9 +1,9 @@
 <template>
   <div>
     <p>New Todo</p>
-    <form @submit.prevent="onSubmit">
-      <TextField v-model="title" label="title" :error="titleError" />
-      <TextField v-model="assignee" label="assignee" :error="assigneeError" />
+    <form @submit="onSubmit">
+      <TextField v-model="title" label="title" :error="errors.title" />
+      <TextField v-model="assignee" label="assignee" :error="errors.assignee" />
       <button type="submit">submit</button>
     </form>
   </div>
@@ -11,29 +11,25 @@
 
 <script>
 import TextField from "@/views/TextField";
-import { useField } from "vee-validate";
+import { useField, useForm } from "vee-validate";
+import * as yup from "yup";
 
 export default {
   components: { TextField },
   setup() {
-    async function onSubmit() {
-      console.log(title, assignee);
-      return false;
-    }
-    const title = useField("title", function (value) {
-      if (!value) return "This field is required";
-      return true;
-    });
-    const assignee = useField("assignee", function (value) {
-      if (!value) return "This field is required";
-      return true;
+    const { handleSubmit, errors } = useForm({
+      validationSchema: yup.object({
+        title: yup.string().required("required").min(3),
+        assignee: yup.string().required("required").min(3),
+      }),
     });
     return {
-      onSubmit: onSubmit,
-      title: title.value,
-      assignee: assignee.value,
-      titleError: title.errorMessage,
-      assigneeError: assignee.errorMessage,
+      title: useField("title").value,
+      assignee: useField("assignee").value,
+      onSubmit: handleSubmit((values) => {
+        console.log("submit", values);
+      }),
+      errors: errors,
     };
   },
 };
