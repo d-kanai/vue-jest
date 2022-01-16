@@ -1,11 +1,12 @@
 <template>
   <div>
-    <label>{{label}}</label>
+    <label>{{ label }}</label>
     <input
+      :id="'input-' + label"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
     />
-    <p class="error">{{error}}</p>
+    <p class="error">{{ error }}</p>
   </div>
 </template>
 <script>
@@ -14,7 +15,7 @@ export default {
   props: {
     modelValue: {},
     label: {},
-    error: {}
+    error: {},
   },
 };
 </script>
@@ -22,5 +23,4 @@ export default {
 .error {
   color: red;
 }
-
 </style>

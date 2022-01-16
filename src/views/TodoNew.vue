@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TextField from "@/views/TextField";
+import TextField from "@/components/TextField";
 import { useField, useForm } from "vee-validate";
 import * as yup from "yup";
 
@@ -19,15 +19,15 @@ export default {
   setup() {
     const { handleSubmit, errors } = useForm({
       validationSchema: yup.object({
-        title: yup.string().required("required").min(3),
-        assignee: yup.string().required("required").min(3),
+        title: yup.string().required("title is required").max(20),
+        assignee: yup.string().required("assignee is required").max(20),
       }),
     });
     return {
       title: useField("title").value,
       assignee: useField("assignee").value,
-      onSubmit: handleSubmit((values) => {
-        console.log("submit", values);
+      onSubmit: handleSubmit((formData) => {
+        console.log("submit", formData);
       }),
       errors: errors,
     };

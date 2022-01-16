@@ -15,7 +15,7 @@
 
 <script>
 import { getTodoList, updateTodoStatus } from "@/apis/TodoApi";
-import TodoListItem from "@/views/TodoListItem";
+import TodoListItem from "@/components/TodoListItem";
 
 export default {
   components: { TodoListItem },
