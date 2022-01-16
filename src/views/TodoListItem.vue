@@ -2,8 +2,8 @@
   <div>
     <input
       type="checkbox"
-      v-model="todo.status"
-      @change="this.$emit('updateStatus', todo)"
+      :checked="modelValue"
+      @change="this.updateStatus(todo, $event)"
     />
     <router-link :to="{ name: 'Todo', params: { id: todo.id } }">
       <span>{{ todo.name }}</span>
@@ -15,6 +15,13 @@ export default {
   name: "TodoListItem",
   props: {
     todo: {},
+    modelValue: {}
   },
+  methods: {
+    updateStatus(todo, event) {
+      this.$emit('update:modelValue', event.target.checked)
+      this.$emit('updateStatus', todo)
+    }
+  }
 };
 </script>
