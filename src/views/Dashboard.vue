@@ -1,8 +1,7 @@
 <template>
   <div>
-    <LineChart v-bind="chartData" />
-    <div v-for="a in rawData.items" :key="a.name">
-        {{a.name}}
+    <div v-for="chartData in chartDataList" :key="chartData.label">
+      <LineChart v-bind="chartData" />
     </div>
   </div>
 </template>
@@ -18,8 +17,8 @@ export default {
   name: "App",
   components: { LineChart },
   setup() {
-    const {chartData, rawData} = useCustomLineChart()
-    return { chartData, rawData}
+    const { chartDataList } = useCustomLineChart()
+    return { chartDataList }
   },
 };
 </script>
