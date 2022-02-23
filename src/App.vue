@@ -15,7 +15,7 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <div class="navbar-item">
-          <router-link to="/">Todo List</router-link>
+          <router-link to="/">Top</router-link>
         </div>
       </div>
       <div class="navbar-end">
@@ -36,11 +36,4 @@
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 </style>

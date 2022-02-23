@@ -1,6 +1,5 @@
 import { computed, ref } from "vue";
 import { useLineChart } from "vue-chart-3";
-import { ChartData } from "chart.js";
 import { findDoDItems, DoDItems } from "@/apis/DoDApi"
 
 export const useCustomLineChart = () => {
