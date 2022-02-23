@@ -16,7 +16,8 @@ export default {
   components: { LineChart },
   setup() {
     const lineChartProps = useCustomLineChart()
-    return { lineChartProps }
+    const lineChartProps2 = useCustomLineChart()
+    return { lineChartProps, lineChartProps2 }
   },
 };
 </script>

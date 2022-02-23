@@ -1,5 +1,5 @@
 
-export async function findDoDItems() {
+export function findDoDItems() {
   console.log('api call: findDoDItems')
   return {
     items: [
@@ -20,5 +20,22 @@ export async function findDoDItems() {
         ]
       }
     ]
-  }
+  } as DoDItems
+}
+
+
+export interface DoDDataRecord {
+  id: number
+  date: string
+  value: number
+  comment: string
+}
+
+export interface DoDItem {
+  name: string
+  data: DoDDataRecord[]
+}
+
+export interface DoDItems {
+  items: DoDItem[]
 }
