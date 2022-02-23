@@ -2,7 +2,7 @@ import { computed, ref } from "vue";
 import { useLineChart } from "vue-chart-3";
 import { findDoDItems, DoDItems } from "@/apis/DoDApi"
 
-export const useCustomLineChart = () => {
+export const useDoDItemsLineChart = () => {
   const rawData = ref({items: []} as DoDItems);
 
   const chartDataList = computed(() => {

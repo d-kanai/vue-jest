@@ -9,7 +9,7 @@
 <script lang='ts'>
 import { LineChart } from "vue-chart-3"
 import { Chart, registerables } from "chart.js"
-import { useCustomLineChart } from "@/hooks/useCustomLineChart"
+import { useDoDItemsLineChart } from "@/hooks/useDoDItemsLineChart"
 
 Chart.register(...registerables);
 
@@ -17,7 +17,7 @@ export default {
   name: "App",
   components: { LineChart },
   setup() {
-    const { chartDataList } = useCustomLineChart()
+    const { chartDataList } = useDoDItemsLineChart()
     return { chartDataList }
   },
 };

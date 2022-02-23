@@ -1,7 +1,7 @@
-import { useCustomLineChart } from "@/hooks/useCustomLineChart";
+import { useDoDItemsLineChart } from "@/hooks/useDoDItemsLineChart";
 import * as api from "@/apis/DoDApi";
 import { DoDItems } from "@/apis/DoDApi";
-import { flushPromises } from "@vue/test-utils";
+import { flushPromises, mount } from "@vue/test-utils";
 
 function mockDoDItemsApi() {
   const response = {
@@ -28,12 +28,12 @@ function mockDoDItemsApi() {
   return response
 }
 
-describe("useCustomLineChart", () => {
+describe("useDoDItemsLineChart", () => {
   it("should find computed ChartData From DoDItemsAPI", async () => {
     //given
     mockDoDItemsApi()
     //when
-    const actual = useCustomLineChart()
+    const actual = useDoDItemsLineChart()
     await flushPromises();
     //then
     expect(actual.chartDataList.value.length).toEqual(2)
