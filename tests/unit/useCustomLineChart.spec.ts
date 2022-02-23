@@ -7,7 +7,7 @@ function mockDoDItemsApi() {
   const response = {
     items: [
       {
-        name: "Long Method",
+        name: "Long Method Mock",
         data: [
           { id: 1, date: "2020-01-01", value: 10, comment: 'something'},
           { id: 2, date: "2020-01-02", value: 20, comment: 'something'},
@@ -29,12 +29,14 @@ function mockDoDItemsApi() {
 }
 
 describe("useCustomLineChart", () => {
-  it("xxx", async () => {
+  it("should find computed ChartData From DoDItemAPI", async () => {
+    //given
+    mockDoDItemsApi()
     //when
     const actual = useCustomLineChart()
     await flushPromises();
     //then
     expect(actual.chartDataList.value.length).toEqual(2)
-    expect(actual.chartDataList.value[0].chartData.datasets[0].label).toEqual('Long Method')
+    expect(actual.chartDataList.value[0].chartData.datasets[0].label).toEqual('Long Method Mock')
   });
 });
