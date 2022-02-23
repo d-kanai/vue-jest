@@ -6,7 +6,7 @@ import { findDoDItems, DoDItems } from "@/apis/DoDApi"
 export const useCustomLineChart = () => {
   const rawData = ref({items: []} as DoDItems);
 
-  const chartData = computed<ChartData<"line">>(() => {
+  const chartData = computed(() => {
     return {
       labels: rawData.value.items[0]?.data.map(row=>row.date),
       datasets: [ {
@@ -24,5 +24,5 @@ export const useCustomLineChart = () => {
   }
   load()
 
-  return lineChartProps
+  return {lineChartProps, rawData}
 }

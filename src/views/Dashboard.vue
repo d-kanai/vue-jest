@@ -1,6 +1,9 @@
 <template>
   <div>
     <LineChart v-bind="lineChartProps" />
+    <div v-for="a in rawData.items" :key="a.name">
+        {{a.name}}
+    </div>
   </div>
 </template>
 
@@ -15,9 +18,8 @@ export default {
   name: "App",
   components: { LineChart },
   setup() {
-    const lineChartProps = useCustomLineChart()
-    const lineChartProps2 = useCustomLineChart()
-    return { lineChartProps, lineChartProps2 }
+    const {lineChartProps, rawData} = useCustomLineChart()
+    return { lineChartProps, rawData}
   },
 };
 </script>
