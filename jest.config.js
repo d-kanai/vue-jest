@@ -6,5 +6,10 @@ module.exports = {
   "moduleNameMapper": {
     "^lodash-es$": "lodash"
   },
-  "setupFiles": ["jest-canvas-mock"]
+  "setupFiles": ["jest-canvas-mock"],
+  "collectCoverageFrom": [
+    "src/**/*.{ts,vue}",
+    "!src/apis/*.ts",
+    "!src/main.ts",
+  ]
 };
