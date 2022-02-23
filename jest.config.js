@@ -3,4 +3,7 @@ module.exports = {
   transform: {
     "^.+\\.vue$": "vue-jest",
   },
+  moduleNameMapper: {
+    "^lodash-es$": "lodash"
+  }
 };
