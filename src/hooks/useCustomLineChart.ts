@@ -7,16 +7,17 @@ export const useCustomLineChart = () => {
   const rawData = ref({items: []} as DoDItems);
 
   const chartData = computed(() => {
-    return {
+    const a = {
       labels: rawData.value.items[0]?.data.map(row=>row.date),
       datasets: [ {
          label: rawData.value.items[0]?.name,
          data: rawData.value.items[0]?.data.map(row=>row.value)
       }],
     }
+    const { lineChartProps } = useLineChart({ chartData: a});
+    console.log(lineChartProps.value)
+    return lineChartProps.value
   });
-
-  const { lineChartProps } = useLineChart({ chartData: chartData });
 
   const load = async () => {
     rawData.value = await findDoDItems()
@@ -24,5 +25,5 @@ export const useCustomLineChart = () => {
   }
   load()
 
-  return {lineChartProps, rawData}
+  return {chartData, rawData}
 }
