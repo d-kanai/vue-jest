@@ -15,7 +15,7 @@ function mockDoDItemsApi() {
         ]
       },
       {
-        name: "Coverage",
+        name: "Coverage Mock",
         data: [
           { id: 1, date: "2020-01-01", value: 81, comment: 'something'},
           { id: 2, date: "2020-01-02", value: 80, comment: 'something'},
@@ -29,7 +29,7 @@ function mockDoDItemsApi() {
 }
 
 describe("useCustomLineChart", () => {
-  it("should find computed ChartData From DoDItemAPI", async () => {
+  it("should find computed ChartData From DoDItemsAPI", async () => {
     //given
     mockDoDItemsApi()
     //when
@@ -38,5 +38,6 @@ describe("useCustomLineChart", () => {
     //then
     expect(actual.chartDataList.value.length).toEqual(2)
     expect(actual.chartDataList.value[0].chartData.datasets[0].label).toEqual('Long Method Mock')
+    expect(actual.chartDataList.value[1].chartData.datasets[0].label).toEqual('Coverage Mock')
   });
 });
