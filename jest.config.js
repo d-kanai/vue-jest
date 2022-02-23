@@ -3,7 +3,8 @@ module.exports = {
   transform: {
     "^.+\\.vue$": "vue-jest",
   },
-  moduleNameMapper: {
+  "moduleNameMapper": {
     "^lodash-es$": "lodash"
-  }
+  },
+  "setupFiles": ["jest-canvas-mock"]
 };

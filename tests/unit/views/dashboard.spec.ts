@@ -1,7 +1,11 @@
 import { useDoDItemsLineChart } from "@/hooks/useDoDItemsLineChart";
+import 'jest-canvas-mock';
 import * as api from "@/apis/DoDApi";
 import { DoDItems } from "@/apis/DoDApi";
-import { flushPromises, mount } from "@vue/test-utils";
+import { flushPromises } from "@vue/test-utils";
+import { mountWithFlushPromise } from "@/../tests/unit/helper"
+
+import Dashboard from "@/views/Dashboard.vue"
 
 function mockDoDItemsApi() {
   const response = {
@@ -29,6 +33,14 @@ function mockDoDItemsApi() {
 }
 
 describe("useDoDItemsLineChart", () => {
+  it("snapshot", async () => {
+    //given
+    mockDoDItemsApi()
+    //when
+    const wrapper = await mountWithFlushPromise(Dashboard);
+    //then
+    expect(wrapper.element).toMatchSnapshot();
+  })
   it("should find computed ChartData From DoDItemsAPI", async () => {
     //given
     mockDoDItemsApi()

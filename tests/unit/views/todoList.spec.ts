@@ -1,7 +1,7 @@
 import TodoList from "@/views/TodoList.vue";
 import * as api from "@/apis/TodoApi";
 import { RouterLink } from "vue-router";
-import { mountWithFlushPromise } from "./helper";
+import { mountWithFlushPromise } from "@/../tests/unit/helper"
 
 function generateTodo(name: string, status?: boolean) {
   return {
