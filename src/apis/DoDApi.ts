@@ -1,5 +1,5 @@
 
-export function findDoDItems() {
+export async function findDoDItems(): Promise<DoDItems> {
   console.log('api call: findDoDItems')
   return {
     items: [
