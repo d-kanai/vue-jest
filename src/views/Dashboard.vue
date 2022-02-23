@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div v-for="chartData in chartDataList" :key="chartData.label">
-      <LineChart v-bind="chartData" />
-    </div>
+    <section class="section">
+      <h3 class="subtitle">Dashboard</h3>
+      <div v-for="chartData in chartDataList" :key="chartData.label">
+        <LineChart v-bind="chartData" />
+      </div>
+    </section>
   </div>
 </template>
 
