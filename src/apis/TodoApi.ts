@@ -11,3 +11,7 @@ export async function getTodoList() {
 export async function updateTodoStatus(id:number, status:boolean) {
   console.log('api call: updateTodoStatus', id, status)
 }
+
+export async function createTodo() {
+  console.log('api call: createTodo')
+}

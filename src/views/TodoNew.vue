@@ -13,6 +13,7 @@
 import TextField from "@/components/TextField";
 import { useField, useForm } from "vee-validate";
 import * as yup from "yup";
+import { createTodo } from "@/apis/TodoApi";
 
 export default {
   components: { TextField },
@@ -28,6 +29,7 @@ export default {
       assignee: useField("assignee").value,
       onSubmit: handleSubmit((formData) => {
         console.log("submit", formData);
+        createTodo()
       }),
       errors: errors,
     };

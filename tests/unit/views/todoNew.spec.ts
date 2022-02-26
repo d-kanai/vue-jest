@@ -1,8 +1,9 @@
 import TodoNew from "@/views/TodoNew.vue";
-import { flushPromises, mount } from "@vue/test-utils";
+import * as api from "@/apis/TodoApi";
+import { mount } from "@vue/test-utils";
 
 describe("TodoNew.vue", () => {
-  it("validate required", async () => {
+  it("validate required field", async () => {
     //when
     const wrapper = await mount(TodoNew);
     await wrapper.vm.onSubmit()
@@ -11,6 +12,10 @@ describe("TodoNew.vue", () => {
     expect(wrapper.text()).toMatch("assignee is required");
   });
   it("submit and call api", async () => {
+    //given
+    const mockCreateTodoApi = jest
+      .spyOn(api, "createTodo")
+      .mockImplementation(jest.fn())
     //when
     const wrapper = await mount(TodoNew);
     await wrapper.find("#input-title").setValue("clean room")
@@ -18,5 +23,6 @@ describe("TodoNew.vue", () => {
     await wrapper.vm.onSubmit()
     //then
     expect(wrapper.text()).not.toMatch("required");
+    expect(mockCreateTodoApi).toHaveBeenCalled()
   });
 });
