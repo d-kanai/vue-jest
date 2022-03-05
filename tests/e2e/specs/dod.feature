@@ -8,4 +8,4 @@ Feature: DoD
     When I visit to "/"
     And I click "DoD"
     Then I see "Long Method"
-    # And I see "Coverage"
+    And I see "Coverage"
