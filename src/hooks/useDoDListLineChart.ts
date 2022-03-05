@@ -1,9 +1,9 @@
 import { computed, ref } from "vue";
 import { useLineChart } from "vue-chart-3";
-import { findDoDItems, DoDItems } from "@/apis/DoDApi"
+import { findDoDList, DoDList } from "@/apis/DoDApi"
 
-export const useDoDItemsLineChart = () => {
-  const rawData = ref({items: []} as DoDItems);
+export const useDoDListLineChart = () => {
+  const rawData = ref({items: []} as DoDList);
 
   const chartDataList = computed(() => {
     return rawData.value.items.map(item => {
@@ -20,7 +20,7 @@ export const useDoDItemsLineChart = () => {
   });
 
   const load = async () => {
-    rawData.value = await findDoDItems()
+    rawData.value = await findDoDList()
   }
   load()
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`useDoDItemsLineChart snapshot 1`] = `
+exports[`useDoDListLineChart snapshot 1`] = `
 <div>
   <section
     class="section"

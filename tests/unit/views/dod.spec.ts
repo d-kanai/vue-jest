@@ -1,10 +1,8 @@
-import { useDoDListLineChart } from "@/hooks/useDoDListLineChart";
 import 'jest-canvas-mock';
 import * as api from "@/apis/DoDApi";
 import { DoDList } from "@/apis/DoDApi";
-import { flushPromises } from "@vue/test-utils";
 import { mountWithFlushPromise } from "@/../tests/unit/helper"
-import Dashboard from "@/views/Dashboard.vue"
+import DoDListPage from "@/views/DoDList.vue"
 
 function mockDoDListApi() {
   const response = {
@@ -31,24 +29,15 @@ function mockDoDListApi() {
   return response
 }
 
-describe("useDoDListLineChart", () => {
-  it("snapshot", async () => {
+describe("DoDList.vue", () => {
+  it("snapshot", async () => { })
+  it("should show DoD List", async () => {
     //given
     mockDoDListApi()
     //when
-    const wrapper = await mountWithFlushPromise(Dashboard);
+    const wrapper = await mountWithFlushPromise(DoDListPage);
     //then
-    expect(wrapper.element).toMatchSnapshot();
-  })
-  it("should find computed ChartData From DoDListAPI", async () => {
-    //given
-    mockDoDListApi()
-    //when
-    const actual = useDoDListLineChart()
-    await flushPromises();
-    //then
-    expect(actual.chartDataList.value.length).toEqual(2)
-    expect(actual.chartDataList.value[0].chartData.datasets[0].label).toEqual('Long Method Mock')
-    expect(actual.chartDataList.value[1].chartData.datasets[0].label).toEqual('Coverage Mock')
+    expect(wrapper.text()).toMatch("Long Method");
+    expect(wrapper.text()).toMatch("Coverage");
   });
 });

@@ -12,7 +12,7 @@
 <script lang='ts'>
 import { LineChart } from "vue-chart-3"
 import { Chart, registerables } from "chart.js"
-import { useDoDItemsLineChart } from "@/hooks/useDoDItemsLineChart"
+import { useDoDListLineChart } from "@/hooks/useDoDListLineChart"
 
 Chart.register(...registerables);
 
@@ -20,7 +20,7 @@ export default {
   name: "App",
   components: { LineChart },
   setup() {
-    const { chartDataList } = useDoDItemsLineChart()
+    const { chartDataList } = useDoDListLineChart()
     return { chartDataList }
   },
 };

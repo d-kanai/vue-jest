@@ -1,6 +1,6 @@
 
-export async function findDoDItems(): Promise<DoDItems> {
-  console.log('api call: findDoDItems')
+export async function findDoDList(): Promise<DoDList> {
+  console.log('api call: findDoDList')
   return {
     items: [
       {
@@ -20,7 +20,7 @@ export async function findDoDItems(): Promise<DoDItems> {
         ]
       }
     ]
-  } as DoDItems
+  } as DoDList
 }
 
 
@@ -36,6 +36,6 @@ export interface DoDItem {
   data: DoDDataRecord[]
 }
 
-export interface DoDItems {
+export interface DoDList {
   items: DoDItem[]
 }
