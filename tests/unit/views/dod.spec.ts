@@ -37,7 +37,7 @@ describe("DoDList.vue", () => {
     //when
     const wrapper = await mountWithFlushPromise(DoDListPage);
     //then
-    expect(wrapper.text()).toMatch("Long Method");
-    expect(wrapper.text()).toMatch("Coverage");
+    expect(wrapper.text()).toMatch("Long Method Mock");
+    expect(wrapper.text()).toMatch("Coverage Mock");
   });
 });
