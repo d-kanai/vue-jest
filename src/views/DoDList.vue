@@ -18,7 +18,8 @@ import * as yup from "yup";
 import { findDoDList, DoDList } from "@/apis/DoDApi"
 import { useField, useForm } from "vee-validate";
 import { ref } from "vue";
-import { createDoD } from "@/apis/DoDApi";
+import { createDoD } from "@/apis/DoDApi"
+import { useDoDForm } from "@/hooks/useDoDForm"
 
 export default {
   name: "App",
@@ -30,14 +31,11 @@ export default {
     }
     load()
 
-    const { handleSubmit, errors } = useForm({
-      validationSchema: yup.object({
-        name: yup.string().required("name is required")
-      }),
-    });
+    const { handleSubmit, errors, name} = useDoDForm()
+
     return {
       dodList,
-      name: useField("name").value,
+      name: name,
       errors: errors,
       onSubmit: handleSubmit((formData) => {
         console.log("submit", formData);
