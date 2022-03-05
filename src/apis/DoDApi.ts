@@ -41,11 +41,11 @@ export interface DoDDataRecord {
   comment: string
 }
 
-export interface DoDItem {
+export interface DoD {
   name: string
   data: DoDDataRecord[]
 }
 
 export interface DoDList {
-  items: DoDItem[]
+  items: DoD[]
 }
