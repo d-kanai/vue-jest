@@ -49,5 +49,6 @@ describe("DoDList.vue", () => {
     await wrapper.vm.onSubmit()
     //then
     expect(mockCreateDoDApi).toHaveBeenCalledWith({name: 'Long Method'})
+    expect(wrapper.text()).toMatch("Long Method");
   });
 });

@@ -42,6 +42,7 @@ export default {
       onSubmit: handleSubmit((formData) => {
         console.log("submit", formData);
         createDoD(formData)
+        dodList.value.items.push({name: formData.name})
       })
     }
   },

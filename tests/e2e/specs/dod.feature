@@ -1,5 +1,6 @@
 Feature: DoD
 
+  @focus
   Scenario: Show list of DoD Items
     Given There are DoD items
       |Long Method|
