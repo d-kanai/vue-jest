@@ -14,5 +14,5 @@ Feature: DoD
     Given I visit to "/dods"
     When I fill in DoD info
       |name|Long Method|
-    And I click submit
+    And I click "Create DoD"
     Then I see "Long Method"

@@ -2,5 +2,5 @@ import {Before, Given, When, Then, And} from "cypress-cucumber-preprocessor/step
 import axios from "axios"
 
 When('I fill in DoD info', (dataTable) => {
-  throw Error("it should imple step here")
+  cy.get("#input-name").type("Long Method")
 })

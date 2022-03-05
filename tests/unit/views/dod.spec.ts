@@ -40,4 +40,14 @@ describe("DoDList.vue", () => {
     expect(wrapper.text()).toMatch("Long Method Mock");
     expect(wrapper.text()).toMatch("Coverage Mock");
   });
+  it("should create DoD", async () => {
+    //given
+    const mockCreateDoDApi = jest.spyOn(api, "createDoD").mockImplementation(jest.fn())
+    //when
+    const wrapper = await mountWithFlushPromise(DoDListPage);
+    await wrapper.find("#input-name").setValue("Long Method")
+    await wrapper.vm.onSubmit()
+    //then
+    expect(mockCreateDoDApi).toHaveBeenCalledWith({name: 'Long Method'})
+  });
 });

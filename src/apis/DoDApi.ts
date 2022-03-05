@@ -1,5 +1,9 @@
 import axios from "axios"
 
+export async function createDoD(params: Object): Promise<String> {
+  console.log('api call: createDoD', params)
+  return "success"
+}
 export async function findDoDList(): Promise<DoDList> {
   console.log('api call: findDoDList')
   axios.defaults.baseURL = 'http://localhost:9000';
