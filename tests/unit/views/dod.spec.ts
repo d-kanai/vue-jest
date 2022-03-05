@@ -4,6 +4,7 @@ import { DoDList } from "@/apis/DoDApi";
 import { mountWithFlushPromise } from "@/../tests/unit/helper"
 import DoDListPage from "@/views/DoDList.vue"
 
+//@IMPROVE move to helper and remove duplicate
 function mockDoDListApi() {
   const response = {
     items: [
@@ -34,6 +35,8 @@ describe("DoDList.vue", () => {
     jest.clearAllMocks();
   })
   it("snapshot", async () => { })
+
+  //@IMPROVE add snapshot test
   it("should show DoD List", async () => {
     //given
     mockDoDListApi()

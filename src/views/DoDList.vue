@@ -11,7 +11,9 @@
   </div>
 </template>
 
+
 <script>
+//@IMPROVE use typescript
 
 import TextField from "@/components/TextField";
 import { createDoD } from "@/apis/DoDApi"
@@ -23,6 +25,7 @@ export default {
   components: { TextField },
   setup() {
     const dodList = useDoDList()
+    // @IMPROVE: move form concern to hook
     const { handleSubmit, errors, name } = useDoDForm()
     return {
       dodList,

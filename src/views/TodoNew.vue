@@ -28,7 +28,6 @@ export default {
       title: useField("title").value,
       assignee: useField("assignee").value,
       onSubmit: handleSubmit((formData) => {
-        console.log("submit", formData);
         createTodo()
       }),
       errors: errors,

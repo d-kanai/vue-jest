@@ -8,7 +8,8 @@
     "test:unit": "vue-cli-service test:unit --verbose --coverage",
     "test:e2e": "vue-cli-service test:e2e -e 'TAGS=not @skip'",
     "test:e2e_f": "vue-cli-service test:e2e -e 'TAGS=@focus'",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "improve": "find cypress tests src -type f | xargs egrep '@IMPROVE'"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",

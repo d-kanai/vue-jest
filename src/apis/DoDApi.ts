@@ -1,6 +1,7 @@
 import { http } from "@/apis/axios"
 
 export async function createDoD(params: any): Promise<string> {
+  // @IMPROVE: auto log by axios intercepter
   console.log('api call: createDoD', params)
   await http.post("/dods", params)
   return "success"
