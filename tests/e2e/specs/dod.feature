@@ -1,7 +1,6 @@
 Feature: DoD
 
-  @focus
-  Scenario: Show list of DoD items
+  Scenario: Show list of DoD Items
     Given There are DoD items
       |Long Method|
       |Coverage|
@@ -9,3 +8,11 @@ Feature: DoD
     And I click "DoD"
     Then I see "Long Method"
     And I see "Coverage"
+
+  @focus
+  Scenario: Create DoD Item
+    Given I visit to "/dods"
+    When I fill in DoD info
+      |name|Long Method|
+    And I click submit
+    Then I see "Long Method"
