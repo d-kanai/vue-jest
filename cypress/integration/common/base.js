@@ -1,4 +1,4 @@
-import {Given, When, Then} from "cypress-cucumber-preprocessor/steps"
+import {Given, When, Then, And} from "cypress-cucumber-preprocessor/steps"
 import axios from "axios"
 
 Given('I visit to {string}', (url) => {
@@ -6,6 +6,11 @@ Given('I visit to {string}', (url) => {
 })
 
 Then('I see {string}', (text) => {
+  cy.contains(text)
+})
+
+And('I click {string}', (text) => {
+  cy.contains(text).click()
 })
 
 Given('There are DoD items', (dataTable) => {

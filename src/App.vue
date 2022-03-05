@@ -17,6 +17,9 @@
         <div class="navbar-item">
           <router-link to="/">Top</router-link>
         </div>
+        <div class="navbar-item">
+          <router-link to="/dods">DoD</router-link>
+        </div>
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
