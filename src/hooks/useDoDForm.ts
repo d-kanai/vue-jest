@@ -8,5 +8,5 @@ export const useDoDForm = () => {
     }),
   });
   const name = useField("name").value
-  return { handleSubmit, errors, name}
+  return { handleSubmit, errors, name }
 }

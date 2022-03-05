@@ -1,22 +1,18 @@
-import axios from "axios"
+import { http } from "@/apis/axios"
 
 export async function createDoD(params: Object): Promise<String> {
-  await axios.post("/dods", params)
   console.log('api call: createDoD', params)
+  await http.post("/dods", params)
   return "success"
 }
 
 export async function findDoDList(): Promise<DoDList> {
   console.log('api call: findDoDList')
-  axios.defaults.baseURL = 'http://localhost:9000';
-  axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-  axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-  const dodList = await axios.get("/dods")
-  console.log(dodList.data);
+  const dodList = await http.get("/dods")
   return {
     items: 
       dodList.data
-  }
+  } as DoDList
   // return {
   //   items: [
   //     {
@@ -38,7 +34,6 @@ export async function findDoDList(): Promise<DoDList> {
   //   ]
   // } as DoDList
 }
-
 
 export interface DoDDataRecord {
   id: number
