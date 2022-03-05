@@ -30,6 +30,9 @@ function mockDoDListApi() {
 }
 
 describe("DoDList.vue", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  })
   it("snapshot", async () => { })
   it("should show DoD List", async () => {
     //given
@@ -50,5 +53,15 @@ describe("DoDList.vue", () => {
     //then
     expect(mockCreateDoDApi).toHaveBeenCalledWith({name: 'Long Method'})
     expect(wrapper.text()).toMatch("Long Method");
+  });
+  it("validate when no input name", async () => {
+    //given
+    const mockCreateDoDApi = jest.spyOn(api, "createDoD").mockImplementation(jest.fn())
+    //when
+    const wrapper = await mountWithFlushPromise(DoDListPage);
+    await wrapper.vm.onSubmit()
+    //then
+    expect(wrapper.text()).toMatch("required");
+    expect(mockCreateDoDApi).toHaveBeenCalledTimes(0)
   });
 });

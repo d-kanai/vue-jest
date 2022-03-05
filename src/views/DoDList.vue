@@ -4,8 +4,8 @@
       <h3 class="subtitle">DoDList</h3>
       <p v-for="dod in dodList.items" :key="dod">{{dod.name}}</p>
       <form @submit="onSubmit">
-        <TextField v-model="name" label="name" />
-        <input type="submit" value="Create DoD" />
+        <TextField v-model="name" label="name" :error="errors.name" />
+        <button type="submit">Create DoD</button>
       </form>
     </section>
   </div>
@@ -29,16 +29,16 @@ export default {
       dodList.value = await findDoDList()
     }
     load()
-    console.log(dodList.value)
 
     const { handleSubmit, errors } = useForm({
       validationSchema: yup.object({
-        name: yup.string()
+        name: yup.string().required("name is required")
       }),
     });
     return {
       dodList,
       name: useField("name").value,
+      errors: errors,
       onSubmit: handleSubmit((formData) => {
         console.log("submit", formData);
         createDoD(formData)

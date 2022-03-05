@@ -4,12 +4,17 @@ import { mount } from "@vue/test-utils";
 
 describe("TodoNew.vue", () => {
   it("validate required field", async () => {
+    //given
+    const mockCreateTodoApi = jest
+      .spyOn(api, "createTodo")
+      .mockImplementation(jest.fn())
     //when
     const wrapper = await mount(TodoNew);
     await wrapper.vm.onSubmit()
     //then
     expect(wrapper.text()).toMatch("title is required");
     expect(wrapper.text()).toMatch("assignee is required");
+    expect(mockCreateTodoApi).toHaveBeenCalledTimes(0)
   });
   it("submit and call api", async () => {
     //given
