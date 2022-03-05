@@ -1,5 +1,21 @@
-import {Given, When, Then, And} from "cypress-cucumber-preprocessor/steps"
+import {Before, Given, When, Then, And} from "cypress-cucumber-preprocessor/steps"
 import axios from "axios"
+axios.defaults.baseURL = 'http://localhost:9000';
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
+export const http = axios.create({
+  baseURL: 'http://localhost:9000',
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8',
+    'Access-Control-Allow-Origin': '*',
+  },
+  timeout: 10000,
+})
+
+Before(() => {
+  http.post('/test/reset')
+})
 
 Given('I visit to {string}', (url) => {
   cy.visit(url);
@@ -14,10 +30,7 @@ And('I click {string}', (text) => {
 })
 
 Given('There are DoD items', (dataTable) => {
-  axios.defaults.baseURL = 'http://localhost:9000';
-  axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-  axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
   dataTable.rawTable.map(name => {
-    axios.post('/test/dod', {name: name[0]})
+    http.post('/test/dod', {name: name[0]})
   })
 })
