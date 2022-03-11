@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit --verbose --coverage",
-    "test:e2e": "vue-cli-service test:e2e -e 'TAGS=not @skip'",
+    "test:e2e": "vue-cli-service test:e2e -e 'TAGS=not @developing'",
     "test:e2e_f": "vue-cli-service test:e2e -e 'TAGS=@focus'",
     "lint": "vue-cli-service lint",
     "improve": "find cypress tests src -type f | xargs egrep '@IMPROVE'"
