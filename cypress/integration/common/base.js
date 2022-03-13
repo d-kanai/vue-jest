@@ -25,6 +25,8 @@ Given('I visit to {string}', (url) => {
 
 Then('I see {string}', (text) => {
   cy.contains(text)
+  cy.reload()
+  cy.contains(text)
 })
 
 And('I click {string}', (text) => {

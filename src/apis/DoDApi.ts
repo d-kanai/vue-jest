@@ -7,6 +7,13 @@ export async function createDoD(params: any): Promise<string> {
   return "success"
 }
 
+export async function createDoDRecord(params: any): Promise<string> {
+  // @IMPROVE: auto log by axios intercepter
+  console.log('api call: createDoDRecord', params)
+  await http.post("/dodRecords", params)
+  return "success"
+}
+
 export async function findDoDList(): Promise<DoDList> {
   console.log('api call: findDoDList')
   const dodList = await http.get("/dods")
@@ -44,6 +51,7 @@ export interface DoDDataRecord {
 }
 
 export interface DoD {
+  id: number
   name: string
   data: DoDDataRecord[]
 }

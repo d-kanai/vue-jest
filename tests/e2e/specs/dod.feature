@@ -17,15 +17,15 @@ Feature: DoD
     Then I see "Long Method"
 
   @focus
-  @developing 
+  @developing
   Scenario: Create DoD Record
     Given There are DoD items
       |Long Method|
     And I visit to "/dods"
     When I fill in DoD Record info for "Long Method"
       |date|2022-01-01|
-      |value|20|
+      |value|30|
       |comment|Add new feature|
     And I click "Create DoD Record"
-    Then I see "2022-01-01" in "DoD Record"
-    And I see "20" in "DoD Recrod"
+    Then I see "2022-01-01" in DoD Record
+    And I see "30" in DoD Record
