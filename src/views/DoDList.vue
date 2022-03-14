@@ -2,20 +2,7 @@
   <div>
     <section class="section">
       <h3 class="subtitle">DoDList</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="dod in dodList.items" :key="dod">
-            <td>{{dod.id}}</td>
-            <td>{{dod.name}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <DoDListTable :dodList="dodList" />
       <form @submit="onSubmit">
         <TextField v-model="name" label="name" :error="errors.name"/>
         <button class="button is-small is-responsive" type="submit">Create DoD</button>
@@ -23,24 +10,7 @@
     </section>
     <section id="dodRecord" class="section">
       <h3 class="subtitle">DoD Record</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Date</th>
-            <th>Value</th>
-            <th>Comment</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="dodRecord in dodRecordList" :key="dodRecord">
-            <td>{{dodRecord.id}}</td>
-            <td>{{dodRecord.date}}</td>
-            <td>{{dodRecord.value}}</td>
-            <td>{{dodRecord.comment}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <DoDRecordListTable :dodRecordList="dodRecordList" />
       <form id="dodRecordForm" @submit="onDoDRecordSubmit">
         <div class="field">
           <div class="select">
@@ -62,7 +32,9 @@
 <script>
 //@IMPROVE use typescript
 
-import TextField from "@/components/TextField";
+import TextField from "@/components/TextField"
+import DoDListTable from "@/components/DoDList/DoDListTable"
+import DoDRecordListTable from "@/components/DoDList/DoDRecordListTable"
 import {createDoD, createDoDRecord} from "@/apis/DoDApi"
 import {useDoDForm, useDoDRecordForm} from "@/hooks/useDoDForm"
 import {useDoDList} from "@/hooks/useDoDList"
@@ -70,7 +42,7 @@ import {ref} from "vue";
 
 export default {
   name: "App",
-  components: {TextField},
+  components: {TextField, DoDListTable, DoDRecordListTable },
   setup() {
     const dodList = useDoDList()
     const dodRecordList = ref([]);
