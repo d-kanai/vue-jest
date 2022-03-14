@@ -20,6 +20,6 @@ Then('I see {string} in DoD Record', (text) => {
   // @IMPROVE: base.jsのstepを使用する（baseにselectorを渡す）
   // RunStep(`I see ${text}`);
   cy.get("#dodRecord").contains(text)
-  cy.reload();
+  // cy.reload();
   cy.get("#dodRecord").contains(text)
 })

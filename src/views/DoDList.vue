@@ -2,13 +2,26 @@
   <div>
     <section class="section">
       <h3 class="subtitle">DoDList</h3>
-      <p v-for="dod in dodList.items" :key="dod">{{ dod.name }}</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="dod in dodList.items" :key="dod">
+            <td>{{dod.id}}</td>
+            <td>{{dod.name}}</td>
+          </tr>
+        </tbody>
+      </table>
       <form @submit="onSubmit">
         <TextField v-model="name" label="name" :error="errors.name"/>
         <button type="submit">Create DoD</button>
       </form>
     </section>
-    <section id="dodRecord">
+    <section id="dodRecord" class="section">
       <p v-for="dodRecord in dodRecordList" :key="dodRecord">{{ dodRecord.date }}, {{ dodRecord.value }}, {{ dodRecord.comment }}</p>
       <form id="dodRecordForm" @submit="onDoDRecordSubmit">
         <select v-model="dodId" id="select-dod">
