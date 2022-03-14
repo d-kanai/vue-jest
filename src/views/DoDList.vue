@@ -5,7 +5,7 @@
       <DoDListTable :dodList="dodList" />
       <form @submit="onSubmit">
         <TextField v-model="name" label="name" :error="errors.name"/>
-        <button class="button is-small is-responsive" type="submit">Create DoD</button>
+        <Button label="Create DoD" />
       </form>
     </section>
     <section id="dodRecord" class="section">
@@ -22,7 +22,7 @@
         <TextField v-model="date" label="date" :error="errors.date"/>
         <TextField v-model="value" label="value" :error="errors.value"/>
         <TextField v-model="comment" label="comment" :error="errors.comment"/>
-        <button class="button is-small is-responsive" type="submit">Create DoD Record</button>
+        <Button label="CreateDoDRecord" />
       </form>
     </section>
   </div>
@@ -33,6 +33,7 @@
 //@IMPROVE use typescript
 
 import TextField from "@/components/TextField"
+import Button from "@/components/Button"
 import DoDListTable from "@/components/DoDList/DoDListTable"
 import DoDRecordListTable from "@/components/DoDList/DoDRecordListTable"
 import {createDoD, createDoDRecord} from "@/apis/DoDApi"
@@ -42,7 +43,7 @@ import {ref} from "vue";
 
 export default {
   name: "App",
-  components: {TextField, DoDListTable, DoDRecordListTable },
+  components: {Button, TextField, DoDListTable, DoDRecordListTable },
   setup() {
     const dodList = useDoDList()
     const dodRecordList = ref([]);
