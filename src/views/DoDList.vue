@@ -37,13 +37,14 @@ import Button from "@/components/Button"
 import DoDListTable from "@/components/DoDList/DoDListTable"
 import DoDRecordListTable from "@/components/DoDList/DoDRecordListTable"
 import {createDoD, createDoDRecord} from "@/apis/DoDApi"
-import {useDoDForm, useDoDRecordForm} from "@/hooks/useDoDForm"
+import {useDoDForm} from "@/hooks/useDoDForm"
+import {useDoDRecordForm} from "@/hooks/useDoDRecordForm"
 import {useDoDList} from "@/hooks/useDoDList"
 import {ref} from "vue";
 
 export default {
   name: "App",
-  components: {Button, TextField, DoDListTable, DoDRecordListTable },
+  components: { Button, TextField, DoDListTable, DoDRecordListTable },
   setup() {
     const dodList = useDoDList()
     const dodRecordList = ref([]);
