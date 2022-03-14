@@ -54,17 +54,17 @@ export default {
       dodList,
       dodFormData,
       dodFormErrors,
-      onDoDRecordSubmit: onDoDRecordSubmit((formData) => {
-        createDoDRecord({...formData, dodId: parseInt(formData.dodId)});
-        dodRecordList.value.push({...formData});
+      onDoDSubmit: onDoDSubmit((formData) => {
+        createDoD(formData)
+        dodList.value.items.push({name: formData.name})
       }),
       dodRecordList,
       dodRecordFormData,
       dodRecordErrors: dodRecordErrors,
-      onDoDSubmit: onDoDSubmit((formData) => {
-        createDoD(formData)
-        dodList.value.items.push({name: formData.name})
-      })
+      onDoDRecordSubmit: onDoDRecordSubmit((formData) => {
+        createDoDRecord({...formData, dodId: parseInt(formData.dodId)});
+        dodRecordList.value.push({...formData});
+      }),
     }
   },
 };
