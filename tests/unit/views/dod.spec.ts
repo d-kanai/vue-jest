@@ -54,7 +54,7 @@ describe("DoDList.vue", () => {
     //when
     const wrapper = await mountWithFlushPromise(DoDListPage);
     await wrapper.find("#input-name").setValue("Long Method")
-    await wrapper.vm.onSubmit()
+    await wrapper.vm.onDoDSubmit()
     //then
     expect(mockCreateDoDApi).toHaveBeenCalledWith({name: 'Long Method'})
     expect(wrapper.text()).toMatch("Long Method");
@@ -64,7 +64,7 @@ describe("DoDList.vue", () => {
     const mockCreateDoDApi = jest.spyOn(api, "createDoD").mockImplementation(jest.fn())
     //when
     const wrapper = await mountWithFlushPromise(DoDListPage);
-    await wrapper.vm.onSubmit()
+    await wrapper.vm.onDoDSubmit()
     //then
     expect(wrapper.text()).toMatch("required");
     expect(mockCreateDoDApi).toHaveBeenCalledTimes(0)
@@ -85,11 +85,11 @@ describe("DoDList.vue", () => {
       await wrapper.find('#input-comment').setValue('Add new feature');
       // then
       await wrapper.vm.onDoDRecordSubmit();
+      expect(mockCreateDoDRecordApi).toHaveBeenCalledTimes(1);
+      expect(mockCreateDoDRecordApi).toHaveBeenCalledWith({"comment": "Add new feature", "date": "2022-01-01", "value": "30", "dodId": dodList.items[0].id});
       expect(wrapper.text()).toMatch("2022-01-01");
       expect(wrapper.text()).toMatch("30");
       expect(wrapper.text()).toMatch("Add new feature");
-      expect(mockCreateDoDRecordApi).toHaveBeenCalledTimes(1);
-      expect(mockCreateDoDRecordApi).toHaveBeenCalledWith({"comment": "Add new feature", "date": "2022-01-01", "value": "30", "dodId": dodList.items[0].id});
     });
   });
 });

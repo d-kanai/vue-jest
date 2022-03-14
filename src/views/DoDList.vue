@@ -3,8 +3,8 @@
     <section class="section">
       <h3 class="subtitle">DoDList</h3>
       <DoDListTable :dodList="dodList" />
-      <form @submit="onSubmit">
-        <TextField v-model="name" label="name" :error="errors.name"/>
+      <form @submit="onDoDSubmit">
+        <TextField v-model="dodFormData.name.value" label="name" :error="dodFormErrors.name"/>
         <Button label="Create DoD" />
       </form>
     </section>
@@ -14,15 +14,15 @@
       <form id="dodRecordForm" @submit="onDoDRecordSubmit">
         <div class="field">
           <div class="select">
-            <select v-model="dodId" id="select-dod">
+            <select v-model="dodRecordFormData.dodId.value" id="select-dod">
               <option value=1>Long Method</option>
             </select>
           </div>
         </div>
-        <TextField v-model="date" label="date" :error="errors.date"/>
-        <TextField v-model="value" label="value" :error="errors.value"/>
-        <TextField v-model="comment" label="comment" :error="errors.comment"/>
-        <Button label="CreateDoDRecord" />
+        <TextField v-model="dodRecordFormData.date.value" label="date" :error="dodRecordErrors.date"/>
+        <TextField v-model="dodRecordFormData.value.value" label="value" :error="dodRecordErrors.value"/>
+        <TextField v-model="dodRecordFormData.comment.value" label="comment" :error="dodRecordErrors.comment"/>
+        <Button label="Create DoD Record" />
       </form>
     </section>
   </div>
@@ -47,24 +47,20 @@ export default {
   setup() {
     const dodList = useDoDList()
     const dodRecordList = ref([]);
-    const {DoDRecordHandleSubmit, DoDRecordErrors, date, value, comment, dodId} = useDoDRecordForm()
-    // @IMPROVE: move form concern to hook
-    const {handleSubmit, errors, name} = useDoDForm()
+    const { onDoDSubmit, dodFormErrors, dodFormData } = useDoDForm()
+    const { onDoDRecordSubmit, dodRecordErrors, dodRecordFormData } = useDoDRecordForm()
     return {
-      date: date,
-      value: value,
-      comment: comment,
-      dodId: dodId,
-      onDoDRecordSubmit: DoDRecordHandleSubmit((formData) => {
+      dodList,
+      dodFormData,
+      dodFormErrors,
+      onDoDRecordSubmit: onDoDRecordSubmit((formData) => {
         createDoDRecord({...formData, dodId: parseInt(formData.dodId)});
         dodRecordList.value.push({...formData});
       }),
-      DoDRecordErrors: DoDRecordErrors,
       dodRecordList,
-      dodList,
-      name: name,
-      errors: errors,
-      onSubmit: handleSubmit((formData) => {
+      dodRecordFormData,
+      dodRecordErrors: dodRecordErrors,
+      onDoDSubmit: onDoDSubmit((formData) => {
         createDoD(formData)
         dodList.value.items.push({name: formData.name})
       })
