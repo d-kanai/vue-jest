@@ -3,6 +3,7 @@
     <section class="section">
       <h3 class="subtitle">DoDList</h3>
       <DoDListTable :dodList="dodList" />
+      <hr/>
       <form @submit="onDoDSubmit">
         <TextField v-model="dodFormData.name.value" label="name" :error="dodFormErrors.name"/>
         <Button label="Create DoD" />
@@ -11,6 +12,7 @@
     <section id="dodRecord" class="section">
       <h3 class="subtitle">DoD Record</h3>
       <DoDRecordListTable :dodRecordList="dodRecordList" />
+      <hr/>
       <form id="dodRecordForm" @submit="onDoDRecordSubmit">
         <div class="field">
           <div class="select">
