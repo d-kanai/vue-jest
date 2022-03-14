@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <label>{{ label }}</label>
-    <input
-      :id="'input-' + label"
-      :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
-    />
-    <p class="error">{{ error }}</p>
+  <div class="field">
+    <!-- <label>{{ label }}</label> -->
+    <div class="control">
+      <input
+        :id="'input-' + label"
+        class="input"
+        :value="modelValue"
+        :placeholder="label"
+        @input="$emit('update:modelValue', $event.target.value)"
+      />
+      <p class="error">{{ error }}</p>
+    </div>
   </div>
 </template>
 <script>

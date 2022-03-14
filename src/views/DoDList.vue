@@ -18,20 +18,24 @@
       </table>
       <form @submit="onSubmit">
         <TextField v-model="name" label="name" :error="errors.name"/>
-        <button type="submit">Create DoD</button>
+        <button class="button is-small is-responsive" type="submit">Create DoD</button>
       </form>
     </section>
     <section id="dodRecord" class="section">
+      <h3 class="subtitle">DoD Record</h3>
       <p v-for="dodRecord in dodRecordList" :key="dodRecord">{{ dodRecord.date }}, {{ dodRecord.value }}, {{ dodRecord.comment }}</p>
       <form id="dodRecordForm" @submit="onDoDRecordSubmit">
-        <select v-model="dodId" id="select-dod">
-          <option value=1>Long Method</option>
-        </select>
+        <div class="field">
+          <div class="select">
+            <select v-model="dodId" id="select-dod">
+              <option value=1>Long Method</option>
+            </select>
+          </div>
+        </div>
         <TextField v-model="date" label="date" :error="errors.date"/>
         <TextField v-model="value" label="value" :error="errors.value"/>
         <TextField v-model="comment" label="comment" :error="errors.comment"/>
-        <input id="input-comment">
-        <button type="submit">Create DoD Record</button>
+        <button class="button is-small is-responsive" type="submit">Create DoD Record</button>
       </form>
     </section>
   </div>
