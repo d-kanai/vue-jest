@@ -23,7 +23,24 @@
     </section>
     <section id="dodRecord" class="section">
       <h3 class="subtitle">DoD Record</h3>
-      <p v-for="dodRecord in dodRecordList" :key="dodRecord">{{ dodRecord.date }}, {{ dodRecord.value }}, {{ dodRecord.comment }}</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Value</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="dodRecord in dodRecordList" :key="dodRecord">
+            <td>{{dodRecord.id}}</td>
+            <td>{{dodRecord.date}}</td>
+            <td>{{dodRecord.value}}</td>
+            <td>{{dodRecord.comment}}</td>
+          </tr>
+        </tbody>
+      </table>
       <form id="dodRecordForm" @submit="onDoDRecordSubmit">
         <div class="field">
           <div class="select">
@@ -56,7 +73,7 @@ export default {
   components: {TextField},
   setup() {
     const dodList = useDoDList()
-    const dodRecordList = ref([{}]);
+    const dodRecordList = ref([]);
     const {DoDRecordHandleSubmit, DoDRecordErrors, date, value, comment, dodId} = useDoDRecordForm()
     // @IMPROVE: move form concern to hook
     const {handleSubmit, errors, name} = useDoDForm()
