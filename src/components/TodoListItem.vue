@@ -15,13 +15,13 @@ export default {
   name: "TodoListItem",
   props: {
     todo: {},
-    modelValue: {}
+    modelValue: {},
   },
   methods: {
     updateStatus(todo, event) {
-      this.$emit('update:modelValue', event.target.checked)
-      this.$emit('updateStatus', todo)
-    }
-  }
+      this.$emit("update:modelValue", event.target.checked);
+      this.$emit("updateStatus", todo);
+    },
+  },
 };
 </script>

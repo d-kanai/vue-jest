@@ -8,8 +8,8 @@
     </thead>
     <tbody>
       <tr v-for="dod in dodList.items" :key="dod">
-        <td>{{dod.id}}</td>
-        <td>{{dod.name}}</td>
+        <td>{{ dod.id }}</td>
+        <td>{{ dod.name }}</td>
       </tr>
     </tbody>
   </table>
@@ -22,5 +22,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

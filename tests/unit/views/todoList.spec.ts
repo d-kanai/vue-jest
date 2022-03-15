@@ -1,24 +1,24 @@
 import TodoList from "@/views/TodoList.vue";
 import * as api from "@/apis/TodoApi";
 import { RouterLink } from "vue-router";
-import { mountWithFlushPromise } from "@/../tests/unit/helper"
+import { mountWithFlushPromise } from "@/../tests/unit/helper";
 
 function generateTodo(name: string, status?: boolean) {
   return {
     id: Date.now(),
     name: name,
-    status: status || false
+    status: status || false,
   };
 }
 
 function mockTodoListApi() {
   const data = [
     generateTodo("todo item"),
-    generateTodo('todo item2'),
-    generateTodo('clean room'),
+    generateTodo("todo item2"),
+    generateTodo("clean room"),
   ];
   jest.spyOn(api, "getTodoList").mockResolvedValueOnce(data);
-  return data
+  return data;
 }
 
 describe("TodoList.vue", () => {
@@ -46,7 +46,7 @@ describe("TodoList.vue", () => {
     mockTodoListApi();
     //when
     const wrapper = await mountWithFlushPromise(TodoList);
-    await wrapper.find('input').setValue('clean room')
+    await wrapper.find("input").setValue("clean room");
     //then
     expect(wrapper.text()).toMatch("clean room");
     expect(wrapper.text()).not.toMatch("todo item");
@@ -56,17 +56,14 @@ describe("TodoList.vue", () => {
     const mockData = mockTodoListApi();
     const mockUpdateTodoStatusAPi = jest
       .spyOn(api, "updateTodoStatus")
-      .mockImplementation(jest.fn())
+      .mockImplementation(jest.fn());
     //when
     const wrapper = await mountWithFlushPromise(TodoList);
-    const checkbox = await wrapper.find('input[type="checkbox"]')
-    await checkbox.trigger('click')
+    const checkbox = await wrapper.find('input[type="checkbox"]');
+    await checkbox.trigger("click");
     //then
-    const elem = checkbox.element as HTMLInputElement
-    expect(elem.checked).toBe(true)
-    expect(mockUpdateTodoStatusAPi).toHaveBeenCalledWith(
-      mockData[0].id,
-      true
-    )
+    const elem = checkbox.element as HTMLInputElement;
+    expect(elem.checked).toBe(true);
+    expect(mockUpdateTodoStatusAPi).toHaveBeenCalledWith(mockData[0].id, true);
   });
 });

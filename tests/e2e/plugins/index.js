@@ -1,8 +1,8 @@
-const cucumber = require('cypress-cucumber-preprocessor').default
+const cucumber = require("cypress-cucumber-preprocessor").default;
 
 module.exports = (on, config) => {
-  on('file:preprocessor', cucumber())
-  require('cypress-terminal-report/src/installLogsPrinter')(on);
+  on("file:preprocessor", cucumber());
+  require("cypress-terminal-report/src/installLogsPrinter")(on);
 
   return Object.assign({}, config, {
     fixturesFolder: "tests/e2e/fixtures",
@@ -12,4 +12,3 @@ module.exports = (on, config) => {
     supportFile: "tests/e2e/support/index.js",
   });
 };
-

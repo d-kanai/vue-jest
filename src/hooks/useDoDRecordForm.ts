@@ -14,6 +14,10 @@ export const useDoDRecordForm = () => {
   const value = useField("value").value;
   const comment = useField("comment").value;
   const dodId = useField<number>("dodId").value;
-  const formData = { date, value, comment, dodId }
-  return { onDoDRecordSubmit: handleSubmit, dodRecordErrors: errors, dodRecordFormData: formData }
+  const formData = { date, value, comment, dodId };
+  return {
+    onDoDRecordSubmit: handleSubmit,
+    dodRecordErrors: errors,
+    dodRecordFormData: formData,
+  };
 };

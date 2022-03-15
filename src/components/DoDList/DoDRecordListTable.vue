@@ -10,10 +10,10 @@
     </thead>
     <tbody>
       <tr v-for="dodRecord in dodRecordList" :key="dodRecord">
-        <td>{{dodRecord.id}}</td>
-        <td>{{dodRecord.date}}</td>
-        <td>{{dodRecord.value}}</td>
-        <td>{{dodRecord.comment}}</td>
+        <td>{{ dodRecord.id }}</td>
+        <td>{{ dodRecord.date }}</td>
+        <td>{{ dodRecord.value }}</td>
+        <td>{{ dodRecord.comment }}</td>
       </tr>
     </tbody>
   </table>
@@ -26,5 +26,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

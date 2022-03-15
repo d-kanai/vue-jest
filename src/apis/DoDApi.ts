@@ -1,26 +1,25 @@
-import { http } from "@/apis/axios"
+import { http } from "@/apis/axios";
 
 export async function createDoD(params: any): Promise<string> {
   // @IMPROVE: auto log by axios intercepter
-  console.log('api call: createDoD', params)
-  await http.post("/dods", params)
-  return "success"
+  console.log("api call: createDoD", params);
+  await http.post("/dods", params);
+  return "success";
 }
 
 export async function createDoDRecord(params: any): Promise<string> {
   // @IMPROVE: auto log by axios intercepter
-  console.log('api call: createDoDRecord', params)
-  await http.post("/dodRecords", params)
-  return "success"
+  console.log("api call: createDoDRecord", params);
+  await http.post("/dodRecords", params);
+  return "success";
 }
 
 export async function findDoDList(): Promise<DoDList> {
-  console.log('api call: findDoDList')
-  const dodList = await http.get("/dods")
+  console.log("api call: findDoDList");
+  const dodList = await http.get("/dods");
   return {
-    items: 
-      dodList.data
-  } as DoDList
+    items: dodList.data,
+  } as DoDList;
   // return {
   //   items: [
   //     {
@@ -44,18 +43,18 @@ export async function findDoDList(): Promise<DoDList> {
 }
 
 export interface DoDDataRecord {
-  id: number
-  date: string
-  value: number
-  comment: string
+  id: number;
+  date: string;
+  value: number;
+  comment: string;
 }
 
 export interface DoD {
-  id: number
-  name: string
-  data: DoDDataRecord[]
+  id: number;
+  name: string;
+  data: DoDDataRecord[];
 }
 
 export interface DoDList {
-  items: DoD[]
+  items: DoD[];
 }

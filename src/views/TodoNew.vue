@@ -28,7 +28,7 @@ export default {
       title: useField("title").value,
       assignee: useField("assignee").value,
       onSubmit: handleSubmit((formData) => {
-        createTodo()
+        createTodo();
       }),
       errors: errors,
     };

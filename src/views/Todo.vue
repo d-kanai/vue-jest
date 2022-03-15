@@ -1,15 +1,9 @@
 <template>
-  <div>
-    hello todo
-  </div>
+  <div>hello todo</div>
 </template>
 
 <script>
-export default {
-
-};
+export default {};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

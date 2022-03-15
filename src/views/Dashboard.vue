@@ -9,10 +9,10 @@
   </div>
 </template>
 
-<script lang='ts'>
-import { LineChart } from "vue-chart-3"
-import { Chart, registerables } from "chart.js"
-import { useDoDListLineChart } from "@/hooks/useDoDListLineChart"
+<script lang="ts">
+import { LineChart } from "vue-chart-3";
+import { Chart, registerables } from "chart.js";
+import { useDoDListLineChart } from "@/hooks/useDoDListLineChart";
 
 Chart.register(...registerables);
 
@@ -20,11 +20,10 @@ export default {
   name: "App",
   components: { LineChart },
   setup() {
-    const { chartDataList } = useDoDListLineChart()
-    return { chartDataList }
+    const { chartDataList } = useDoDListLineChart();
+    return { chartDataList };
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
