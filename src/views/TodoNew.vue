@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TextField from "@/components/TextField";
+import TextField from "@/components/atoms/TextField";
 import { useField, useForm } from "vee-validate";
 import * as yup from "yup";
 import { createTodo } from "@/apis/TodoApi";

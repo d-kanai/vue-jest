@@ -33,8 +33,8 @@
 <script>
 //@IMPROVE use typescript
 
-import TextField from "@/components/TextField";
-import Button from "@/components/Button";
+import TextField from "@/components/atoms/TextField";
+import Button from "@/components/atoms/Button";
 import DoDListTable from "@/components/DoDList/DoDListTable";
 import DoDRecordListTable from "@/components/DoDList/DoDRecordListTable";
 import { createDoD, createDoDRecord } from "@/apis/DoDApi";
