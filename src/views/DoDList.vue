@@ -5,11 +5,7 @@
       <DoDListTable :dodList="dodList" />
       <hr />
       <form @submit="onDoDSubmit">
-        <TextField
-          v-model="dodFormData.name.value"
-          label="name"
-          :error="dodFormErrors.name"
-        />
+        <TextField v-model="dodFormData.name.value" label="name" :error="dodFormErrors.name" />
         <Button label="Create DoD" />
       </form>
     </section>
@@ -25,21 +21,9 @@
             </select>
           </div>
         </div>
-        <TextField
-          v-model="dodRecordFormData.date.value"
-          label="date"
-          :error="dodRecordErrors.date"
-        />
-        <TextField
-          v-model="dodRecordFormData.value.value"
-          label="value"
-          :error="dodRecordErrors.value"
-        />
-        <TextField
-          v-model="dodRecordFormData.comment.value"
-          label="comment"
-          :error="dodRecordErrors.comment"
-        />
+        <TextField v-model="dodRecordFormData.date.value" label="date" :error="dodRecordErrors.date" />
+        <TextField v-model="dodRecordFormData.value.value" label="value" :error="dodRecordErrors.value" />
+        <TextField v-model="dodRecordFormData.comment.value" label="comment" :error="dodRecordErrors.comment" />
         <Button label="Create DoD Record" />
       </form>
     </section>
@@ -66,8 +50,7 @@ export default {
     const dodList = useDoDList();
     const dodRecordList = ref([]);
     const { onDoDSubmit, dodFormErrors, dodFormData } = useDoDForm();
-    const { onDoDRecordSubmit, dodRecordErrors, dodRecordFormData } =
-      useDoDRecordForm();
+    const { onDoDRecordSubmit, dodRecordErrors, dodRecordFormData } = useDoDRecordForm();
     return {
       dodList,
       dodFormData,
