@@ -1,48 +1,12 @@
 import "jest-canvas-mock";
 import * as api from "@/apis/DoDApi";
-import { DoDList, DoD } from "@/apis/DoDApi";
 import { mountWithFlushPromise } from "@/../tests/unit/helper";
 import DoDDetail from "@/views/DoDDetail.vue";
-import { useRouter, useRoute } from 'vue-router'
-
-//@IMPROVE move to helper and remove duplicate
-function mockDoDListApi() {
-  const response = {
-    items: [
-      {
-        id: 1,
-        name: "Long Method Mock",
-        data: [
-          { id: 1, date: "2020-01-01", value: 10, comment: "something" },
-          { id: 2, date: "2020-01-02", value: 20, comment: "something" },
-          { id: 3, date: "2020-01-03", value: 30, comment: "something" },
-        ],
-      },
-      {
-        id: 2,
-        name: "Coverage Mock",
-        data: [
-          { id: 1, date: "2020-01-01", value: 81, comment: "something" },
-          { id: 2, date: "2020-01-02", value: 80, comment: "something" },
-          { id: 3, date: "2020-01-03", value: 90, comment: "something" },
-        ],
-      },
-    ],
-  } as DoDList;
-  jest.spyOn(api, "findDoDList").mockResolvedValueOnce(response);
-  return response;
-}
+import { mockDoDListApi } from "@/../tests/unit/mockApi"
 
 describe("DoDList.vue", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-      jest.mock('vue-router', () => ({
-        useRoute: () => ({ 
-          params: {id: 1}
-        })
-      }))
- 
-
   });
   describe("CreateDoDRecord", () => {
     it("should create dod record", async function () {
