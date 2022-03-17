@@ -12,18 +12,16 @@
   </div>
 </template>
 
-<script>
-//@IMPROVE use typescript
-
-import TextField from "@/components/atoms/TextField";
-import Button from "@/components/atoms/Button";
-import DoDListTable from "@/components/DoDList/DoDListTable";
+<script lang='ts'>
+import TextField from "@/components/atoms/TextField.vue";
+import Button from "@/components/atoms/Button.vue";
+import DoDListTable from "@/components/DoDList/DoDListTable.vue";
 import { createDoD } from "@/apis/DoDApi";
 import { useDoDForm } from "@/hooks/useDoDForm";
 import { useDoDList } from "@/hooks/useDoDList";
 
 export default {
-  name: "App",
+  name: "DoDDetail",
   components: { Button, TextField, DoDListTable },
   setup() {
     const dodList = useDoDList();

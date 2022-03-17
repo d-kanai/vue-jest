@@ -17,7 +17,7 @@ import { useDoDListLineChart } from "@/hooks/useDoDListLineChart";
 Chart.register(...registerables);
 
 export default {
-  name: "App",
+  name: "Dashboard",
   components: { LineChart },
   setup() {
     const { chartDataList } = useDoDListLineChart();
