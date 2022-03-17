@@ -1,10 +1,10 @@
 import { http } from "@/apis/axios";
 
-export async function createDoD(params: any): Promise<string> {
+export async function createDoD(params: any): Promise<DoD> {
   // @IMPROVE: auto log by axios intercepter
   console.log("api call: createDoD", params);
-  await http.post("/dods", params);
-  return "success";
+  const response = await http.post("/dods", params);
+  return response.data;
 }
 
 export async function createDoDRecord(params: any): Promise<string> {

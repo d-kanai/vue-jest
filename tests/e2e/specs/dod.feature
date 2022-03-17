@@ -17,12 +17,12 @@ Feature: DoD
     Then I see "Long Method"
 
   @focus
-  @developing
   Scenario: Create DoD Record
     Given There are DoD items
       |Long Method|
     And I visit to "/dods"
-    When I fill in DoD Record info for "Long Method"
+    When I click "Long Method"
+    And I fill in DoD Record info for "Long Method"
       |date|2022-01-01|
       |value|30|
       |comment|Add new feature|

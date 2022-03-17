@@ -7,14 +7,12 @@ export const useDoDRecordForm = () => {
       date: yup.string().required("date is required"),
       value: yup.string().required("value is required"),
       comment: yup.string(),
-      dodId: yup.number().required("dodId is required"),
     }),
   });
   const date = useField("date").value;
   const value = useField("value").value;
   const comment = useField("comment").value;
-  const dodId = useField<number>("dodId").value;
-  const formData = { date, value, comment, dodId };
+  const formData = { date, value, comment };
   return {
     onDoDRecordSubmit: handleSubmit,
     dodRecordErrors: errors,

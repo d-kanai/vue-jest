@@ -15,8 +15,6 @@ When("I fill in DoD info", (dataTable) => {
 });
 
 When("I fill in DoD Record info for {string}", (dodName, dataTable) => {
-  //@IMPROVE: use dataTable var
-  cy.get("#select-dod").select(dodName);
   dataTable.rawTable.map((row) => {
     cy.get(`#input-${row[0]}`).type(row[1]);
   });
