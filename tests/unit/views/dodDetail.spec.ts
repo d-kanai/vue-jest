@@ -5,8 +5,6 @@ import { mountWithFlushPromise } from "@/../tests/unit/helper";
 import DoDDetail from "@/views/DoDDetail.vue";
 import { useRouter, useRoute } from 'vue-router'
 
-
-
 //@IMPROVE move to helper and remove duplicate
 function mockDoDListApi() {
   const response = {
@@ -38,6 +36,12 @@ function mockDoDListApi() {
 describe("DoDList.vue", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+      jest.mock('vue-router', () => ({
+        useRoute: () => ({ 
+          params: {id: 1}
+        })
+      }))
+ 
 
   });
   describe("CreateDoDRecord", () => {
@@ -45,12 +49,8 @@ describe("DoDList.vue", () => {
       //given
       const dodList = mockDoDListApi();
       const mockCreateDoDRecordApi = jest.spyOn(api, "createDoDRecord").mockImplementation(jest.fn());
-      //TODO: we need mock useRoute return params
-      const mock = jest.fn()
-      mock.mockImplementationOnce(() => ({ params: { id: 1 } }))
-      jest.mock('vue-router', () => ({ useRoute: mock, useRouter: jest.fn(() => ({ push: () => {} })) }))
-      //when
-      const wrapper = await mountWithFlushPromise(DoDDetail);
+     //when
+      const wrapper = await mountWithFlushPromise(DoDDetail, `/dods/${dodList.items[0].id}`);
       await wrapper.find("#input-date").setValue("2022-01-01");
       await wrapper.find("#input-value").setValue("30");
       await wrapper.find("#input-comment").setValue("Add new feature");
