@@ -17,9 +17,7 @@ export async function createDoDRecord(params: any): Promise<string> {
 export async function findDoDList(): Promise<DoDList> {
   console.log("api call: findDoDList");
   const dodList = await http.get("/dods");
-  return {
-    items: dodList.data,
-  } as DoDList;
+  return dodList.data as DoDList;
   // return {
   //   items: [
   //     {

@@ -57,7 +57,7 @@ export default {
       dodFormErrors,
       onDoDSubmit: onDoDSubmit((formData) => {
         createDoD(formData);
-        dodList.value.items.push({ name: formData.name });
+        dodList.value.items.push({ id: '', name: formData.name, data: [] });
       }),
       dodRecordList,
       dodRecordFormData,

@@ -50,9 +50,8 @@ describe("DoDList.vue", () => {
   });
   it("should create DoD", async () => {
     //given
-    const mockCreateDoDApi = jest
-      .spyOn(api, "createDoD")
-      .mockImplementation(jest.fn());
+    mockDoDListApi();
+    const mockCreateDoDApi = jest.spyOn(api, "createDoD").mockImplementation(jest.fn());
     //when
     const wrapper = await mountWithFlushPromise(DoDListPage);
     await wrapper.find("#input-name").setValue("Long Method");
@@ -63,9 +62,7 @@ describe("DoDList.vue", () => {
   });
   it("validate when no input name", async () => {
     //given
-    const mockCreateDoDApi = jest
-      .spyOn(api, "createDoD")
-      .mockImplementation(jest.fn());
+    const mockCreateDoDApi = jest.spyOn(api, "createDoD").mockImplementation(jest.fn());
     //when
     const wrapper = await mountWithFlushPromise(DoDListPage);
     await wrapper.vm.onDoDSubmit();
@@ -78,9 +75,7 @@ describe("DoDList.vue", () => {
     it("should create dod record", async function () {
       //given
       const dodList = mockDoDListApi();
-      const mockCreateDoDRecordApi = jest
-        .spyOn(api, "createDoDRecord")
-        .mockImplementation(jest.fn());
+      const mockCreateDoDRecordApi = jest.spyOn(api, "createDoDRecord").mockImplementation(jest.fn());
       //when
       const wrapper = await mountWithFlushPromise(DoDListPage);
       const option = await wrapper.find("#select-dod").find("option");
