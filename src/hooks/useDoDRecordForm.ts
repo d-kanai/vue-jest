@@ -14,8 +14,8 @@ export const useDoDRecordForm = () => {
   const comment = useField("comment").value;
   const formData = { date, value, comment };
   return {
-    onDoDRecordSubmit: handleSubmit,
-    dodRecordErrors: errors,
-    dodRecordFormData: formData,
+    onSubmit: handleSubmit,
+    formData,
+    errors,
   };
 };

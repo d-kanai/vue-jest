@@ -33,7 +33,7 @@ describe("DoDList.vue", () => {
     //when
     const wrapper = await mountWithFlushPromise(DoDListPage);
     await wrapper.find("#input-name").setValue("Long Method");
-    await wrapper.findComponent(DoDForm).vm.onDoDSubmit()
+    await wrapper.findComponent(DoDForm).vm.onSubmit()
     // TODO: too much know details. change to below
     // const button = await wrapper.find('#dodFormSubmitButton');
     // await button.trigger("click");
@@ -46,7 +46,7 @@ describe("DoDList.vue", () => {
     const _mockCreateDoDApi = mockCreateDoDApi()
     //when
     const wrapper = await mountWithFlushPromise(DoDListPage);
-    await wrapper.findComponent(DoDForm).vm.onDoDSubmit()
+    await wrapper.findComponent(DoDForm).vm.onSubmit()
     //then
     expect(wrapper.text()).toMatch("required");
     expect(_mockCreateDoDApi).toHaveBeenCalledTimes(0);

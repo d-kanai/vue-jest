@@ -19,7 +19,7 @@ describe("DoDList.vue", () => {
       await wrapper.find("#input-value").setValue("30");
       await wrapper.find("#input-comment").setValue("Add new feature");
       //then
-      await wrapper.vm.onDoDRecordSubmit();
+      await wrapper.vm.onSubmit();
       expect(mockCreateDoDRecordApi).toHaveBeenCalledTimes(1);
       expect(mockCreateDoDRecordApi).toHaveBeenCalledWith({
         comment: "Add new feature",

@@ -4,10 +4,10 @@
       <h3 class="subtitle">DoD Detail</h3>
       <DoDRecordListTable :dodRecordList="dodRecordList" />
       <hr />
-      <form id="dodRecordForm" @submit="onDoDRecordSubmit">
-        <TextField v-model="dodRecordFormData.date.value" label="date" :error="dodRecordErrors.date" />
-        <TextField v-model="dodRecordFormData.value.value" label="value" :error="dodRecordErrors.value" />
-        <TextField v-model="dodRecordFormData.comment.value" label="comment" :error="dodRecordErrors.comment" />
+      <form id="dodRecordForm" @submit="onSubmit">
+        <TextField v-model="formData.date.value" label="date" :error="errors.date" />
+        <TextField v-model="formData.value.value" label="value" :error="errors.value" />
+        <TextField v-model="formData.comment.value" label="comment" :error="errors.comment" />
         <Button label="Create DoD Record" />
       </form>
     </section>
@@ -24,19 +24,18 @@ import { useDoDRecordForm } from "@/hooks/useDoDRecordForm";
 import { ref } from "vue";
 import { useRoute } from 'vue-router'
 
-
 export default {
   name: "DoDDetail",
   components: { Button, TextField, DoDRecordListTable },
   setup() {
     const dodRecordList = ref([]);
-    const { onDoDRecordSubmit, dodRecordErrors, dodRecordFormData } = useDoDRecordForm();
+    const { onSubmit, formData, errors } = useDoDRecordForm();
     const route = useRoute()
     return {
       dodRecordList,
-      dodRecordFormData,
-      dodRecordErrors: dodRecordErrors,
-      onDoDRecordSubmit: onDoDRecordSubmit((formData) => {
+      formData,
+      errors,
+      onSubmit: onSubmit((formData) => {
         createDoDRecord({ ...formData, dodId: parseInt(route.params.id) });
         dodRecordList.value.push({ ...formData });
       }),

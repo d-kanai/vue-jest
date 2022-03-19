@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DoDList.vue snapshot 1`] = `
+<div>
+  <section
+    class="section"
+  >
+    <h3
+      class="subtitle"
+    >
+      DoDList
+    </h3>
+    <table
+      class="table"
+    >
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            Name
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            <a
+              class=""
+              href="/dods/1"
+            >
+              Long Method Mock
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2
+          </td>
+          <td>
+            <a
+              class=""
+              href="/dods/2"
+            >
+              Coverage Mock
+            </a>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <hr />
+    <form>
+      <div
+        class="field"
+      >
+        <!-- &lt;label&gt;{{ label }}&lt;/label&gt; -->
+        <div
+          class="control"
+        >
+          <input
+            class="input"
+            id="input-name"
+            placeholder="name"
+          />
+          <p
+            class="error"
+          />
+        </div>
+      </div>
+      <button
+        class="button is-primary is-small is-responsive"
+        id="dodFormSubmitButton"
+        type="submit"
+      >
+        Create DoD
+      </button>
+    </form>
+  </section>
+</div>
+`;

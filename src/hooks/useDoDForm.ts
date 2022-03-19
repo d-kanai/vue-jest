@@ -10,8 +10,8 @@ export const useDoDForm = () => {
   const name = useField("name").value;
   const formData = { name };
   return {
-    onDoDSubmit: handleSubmit,
-    dodFormErrors: errors,
-    dodFormData: formData,
+    onSubmit: handleSubmit,
+    formData,
+    errors,
   };
 };
