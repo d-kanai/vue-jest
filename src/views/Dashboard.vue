@@ -13,17 +13,18 @@
 import { LineChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
 import { useDoDListLineChart } from "@/hooks/useDoDListLineChart";
+import { defineComponent } from 'vue'
 
 Chart.register(...registerables);
 
-export default {
+export default defineComponent({
   name: "Dashboard",
   components: { LineChart },
   setup() {
     const { chartDataList } = useDoDListLineChart();
     return { chartDataList };
   },
-};
+});
 </script>
 
 <style></style>

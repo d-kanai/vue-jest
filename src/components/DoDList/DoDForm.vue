@@ -4,11 +4,12 @@
     <Button id="dodFormSubmitButton" label="Create DoD" />
   </form>
 </template>
-<script>
+<script lang='ts'>
 import TextField from "@/components/atoms/TextField.vue";
 import Button from "@/components/atoms/Button.vue";
 import { useDoDForm } from "@/hooks/useDoDForm";
-export default {
+import { defineComponent } from 'vue'
+export default defineComponent({
   name: "DoDForm",
   components: { Button, TextField },
   props: { },
@@ -22,6 +23,6 @@ export default {
       }),
     };
   },
-};
+});
 </script>
 <style></style>

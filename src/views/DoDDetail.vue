@@ -13,10 +13,10 @@
 import DoDRecordListTable from "@/components/DoDList/DoDRecordListTable.vue";
 import DoDRecordForm from "@/components/DoDList/DoDRecordForm.vue";
 import { createDoDRecord, DoDRecord } from "@/apis/DoDApi";
-import { ref } from "vue";
+import { ref, defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
 
-export default {
+export default defineComponent({
   name: "DoDDetail",
   components: { DoDRecordListTable, DoDRecordForm },
   setup() {
@@ -30,7 +30,7 @@ export default {
       },
     };
   },
-};
+)};
 </script>
 
 <style></style>

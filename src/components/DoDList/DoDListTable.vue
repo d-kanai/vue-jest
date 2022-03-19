@@ -18,12 +18,13 @@
     </tbody>
   </table>
 </template>
-<script>
-export default {
+<script lant='ts'>
+import { defineComponent } from 'vue'
+export default defineComponent({
   name: "DoDListTable",
   props: {
     dodList: {},
   },
-};
+});
 </script>
 <style></style>

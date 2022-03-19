@@ -14,8 +14,9 @@ import DoDListTable from "@/components/DoDList/DoDListTable.vue";
 import DoDForm from "@/components/DoDList/DoDForm.vue";
 import { createDoD } from "@/apis/DoDApi";
 import { useDoDList } from "@/hooks/useDoDList";
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: "DoDList",
   components: { DoDListTable, DoDForm },
   setup() {
@@ -28,7 +29,7 @@ export default {
       },
     };
   },
-};
+});
 </script>
 
 <style></style>

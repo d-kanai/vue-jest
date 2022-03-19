@@ -3,12 +3,13 @@
     {{ label }}
   </button>
 </template>
-<script lang="ts">
-export default {
+<script lang='ts'>
+import { defineComponent } from 'vue'
+export default defineComponent({
   name: "Button",
   props: {
     label: String,
   },
-};
+});
 </script>
 <style></style>
