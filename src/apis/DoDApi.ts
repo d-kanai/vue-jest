@@ -7,11 +7,11 @@ export async function createDoD(params: any): Promise<DoD> {
   return response.data;
 }
 
-export async function createDoDRecord(params: any): Promise<string> {
+export async function createDoDRecord(params: any): Promise<DoDRecord> {
   // @IMPROVE: auto log by axios intercepter
   console.log("api call: createDoDRecord", params);
-  await http.post("/dodRecords", params);
-  return "success";
+  const response = await http.post("/dodRecords", params);
+  return response.data;
 }
 
 export async function findDoDList(): Promise<DoDList> {
@@ -40,7 +40,7 @@ export async function findDoDList(): Promise<DoDList> {
   // } as DoDList
 }
 
-export interface DoDDataRecord {
+export interface DoDRecord {
   id: number;
   date: string;
   value: number;
@@ -50,7 +50,7 @@ export interface DoDDataRecord {
 export interface DoD {
   id: number;
   name: string;
-  data: DoDDataRecord[];
+  data: DoDRecord[];
 }
 
 export interface DoDList {
