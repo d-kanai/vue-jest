@@ -8,18 +8,18 @@ export function mockDoDListApi() {
         id: 1,
         name: "Long Method Mock",
         data: [
-          { id: 1, date: "2020-01-01", value: 10, comment: "something" },
-          { id: 2, date: "2020-01-02", value: 20, comment: "something" },
-          { id: 3, date: "2020-01-03", value: 30, comment: "something" },
+          { id: 1, date: "2022-01-01", value: 10, comment: "something" },
+          { id: 2, date: "2022-01-02", value: 20, comment: "something" },
+          { id: 3, date: "2022-01-03", value: 30, comment: "something" },
         ],
       },
       {
         id: 2,
         name: "Coverage Mock",
         data: [
-          { id: 1, date: "2020-01-01", value: 81, comment: "something" },
-          { id: 2, date: "2020-01-02", value: 80, comment: "something" },
-          { id: 3, date: "2020-01-03", value: 90, comment: "something" },
+          { id: 1, date: "2022-01-01", value: 81, comment: "something" },
+          { id: 2, date: "2022-01-02", value: 80, comment: "something" },
+          { id: 3, date: "2022-01-03", value: 90, comment: "something" },
         ],
       },
     ],
@@ -34,6 +34,6 @@ export function mockCreateDoDApi() {
 }
 
 export function mockCreateDoDRecordApi() {
-    const response = new Promise<DoDRecord>((resolve, _) => { resolve({id: 1, date: "2020-01-01", value: 20, comment: 'New Feature'}); });
+    const response = new Promise<DoDRecord>((resolve, _) => { resolve({id: 1, dodId: 100, date: "2022-01-01", value: 30, comment: 'Add new feature'}); });
     return jest.spyOn(api, "createDoDRecord").mockResolvedValueOnce(response);
 }

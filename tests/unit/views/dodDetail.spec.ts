@@ -1,7 +1,8 @@
-import "jest-canvas-mock";
 import { mountWithFlushPromise } from "@/../tests/unit/helper";
 import DoDDetail from "@/views/DoDDetail.vue";
+import DoDRecordForm from "@/components/DoDList/DoDRecordForm.vue";
 import { mockCreateDoDRecordApi } from "@/../tests/unit/mockApi"
+import { flushPromises } from "@vue/test-utils";
 
 describe("DoDList.vue", () => {
   beforeEach(() => {
@@ -17,8 +18,9 @@ describe("DoDList.vue", () => {
       await wrapper.find("#input-date").setValue("2022-01-01");
       await wrapper.find("#input-value").setValue("30");
       await wrapper.find("#input-comment").setValue("Add new feature");
+      await wrapper.findComponent(DoDRecordForm).vm.onSubmit()
+      await flushPromises()
       //then
-      await wrapper.vm.onSubmit();
       expect(_mockCreateDoDRecordApi).toHaveBeenCalledTimes(1);
       expect(_mockCreateDoDRecordApi).toHaveBeenCalledWith({
         comment: "Add new feature",
@@ -26,7 +28,7 @@ describe("DoDList.vue", () => {
         value: "30",
         dodId: dodId,
       });
-      expect(wrapper.text()).toMatch("2022-01-01");
+      expect(wrapper.text()).toContain("2022-01-01");
       expect(wrapper.text()).toMatch("30");
       expect(wrapper.text()).toMatch("Add new feature");
     });
@@ -37,7 +39,7 @@ describe("DoDList.vue", () => {
       //when
       const wrapper = await mountWithFlushPromise(DoDDetail, `/dods/${dodId}`);
       //then
-      await wrapper.vm.onSubmit();
+      await wrapper.findComponent(DoDRecordForm).vm.onSubmit()
       expect(_mockCreateDoDRecordApi).toHaveBeenCalledTimes(0);
       expect(wrapper.text()).toMatch("required");
     });
