@@ -1,15 +1,22 @@
 import "jest-canvas-mock";
 import { mountWithFlushPromise } from "@/../tests/unit/helper";
 import DoDListPage from "@/views/DoDList.vue";
+import DoDForm from "@/components/DoDList/DoDForm.vue";
 import { mockDoDListApi, mockCreateDoDApi } from "@/../tests/unit/mockApi"
+import { flushPromises } from "@vue/test-utils";
 
 describe("DoDList.vue", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
-  it("snapshot", async () => {});
-
-  //@IMPROVE add snapshot test
+  it("snapshot", async () => {
+    //given
+    mockDoDListApi();
+    //when
+    const wrapper = await mountWithFlushPromise(DoDListPage);
+    //then
+    expect(wrapper.element).toMatchSnapshot();
+  });
   it("should show DoD List", async () => {
     //given
     mockDoDListApi();
@@ -26,7 +33,10 @@ describe("DoDList.vue", () => {
     //when
     const wrapper = await mountWithFlushPromise(DoDListPage);
     await wrapper.find("#input-name").setValue("Long Method");
-    await wrapper.vm.onDoDSubmit();
+    await wrapper.findComponent(DoDForm).vm.onDoDSubmit()
+    // TODO: too much know details. change to below
+    // const button = await wrapper.find('#dodFormSubmitButton');
+    // await button.trigger("click");
     //then
     expect(_mockCreateDoDApi).toHaveBeenCalledWith({ name: "Long Method" });
     expect(wrapper.text()).toMatch("Long Method");
@@ -36,7 +46,7 @@ describe("DoDList.vue", () => {
     const _mockCreateDoDApi = mockCreateDoDApi()
     //when
     const wrapper = await mountWithFlushPromise(DoDListPage);
-    await wrapper.vm.onDoDSubmit();
+    await wrapper.findComponent(DoDForm).vm.onDoDSubmit()
     //then
     expect(wrapper.text()).toMatch("required");
     expect(_mockCreateDoDApi).toHaveBeenCalledTimes(0);
