@@ -25,9 +25,6 @@ export default defineComponent({
   props: {
     dodRecordList: {},
   },
-  created() {
-    console.log(this.dodRecordList)
-  }
 });
 </script>
 <style></style>
