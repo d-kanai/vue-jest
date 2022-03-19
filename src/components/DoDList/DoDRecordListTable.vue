@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="dodRecord in dodRecordList" :key="dodRecord">
+      <tr v-for="dodRecord in dodRecordList.items" :key="dodRecord">
         <td>{{ dodRecord.id }}</td>
         <td>{{ dodRecord.date }}</td>
         <td>{{ dodRecord.value }}</td>

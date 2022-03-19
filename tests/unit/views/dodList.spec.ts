@@ -3,7 +3,6 @@ import { mountWithFlushPromise } from "@/../tests/unit/helper";
 import DoDList from "@/views/DoDList.vue";
 import DoDForm from "@/components/DoDList/DoDForm.vue";
 import { mockDoDListApi, mockCreateDoDApi } from "@/../tests/unit/mockApi"
-import { flushPromises } from "@vue/test-utils";
 
 describe("DoDList.vue", () => {
   beforeEach(() => {

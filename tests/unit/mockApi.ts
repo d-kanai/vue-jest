@@ -1,4 +1,4 @@
-import { DoDRecord, DoDList, DoD } from "@/apis/DoDApi";
+import { DoDRecord, DoDRecordList, DoDList, DoD } from "@/apis/DoDApi";
 import * as api from "@/apis/DoDApi";
 
 export function mockDoDListApi() {
@@ -26,6 +26,28 @@ export function mockDoDListApi() {
   } as DoDList;
   jest.spyOn(api, "findDoDList").mockResolvedValueOnce(response);
   return response;
+}
+
+export function mockDoDRecordListApi() {
+  const response = {
+    items: [
+      {
+        id: 1,
+        date: "2022-01-01",
+        value: 10,
+        comment: 'Add new feature'
+      },
+      {
+        id: 2,
+        date: "2022-01-02",
+        value: 20,
+        comment: 'Add new feature 2'
+      },
+
+    ],
+  } as DoDRecordList;
+  const mock = jest.spyOn(api, "findDoDRecordList").mockResolvedValueOnce(response);
+  return {mock, response};
 }
 
 export function mockCreateDoDApi() {

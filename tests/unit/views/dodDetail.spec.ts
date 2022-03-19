@@ -1,17 +1,31 @@
 import { mountWithFlushPromise } from "@/../tests/unit/helper";
 import DoDDetail from "@/views/DoDDetail.vue";
 import DoDRecordForm from "@/components/DoDList/DoDRecordForm.vue";
-import { mockCreateDoDRecordApi } from "@/../tests/unit/mockApi"
+import { mockCreateDoDRecordApi, mockDoDRecordListApi } from "@/../tests/unit/mockApi"
 import { flushPromises } from "@vue/test-utils";
 
-describe("DoDList.vue", () => {
+describe("DoDDetailPage", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
   describe("CreateDoDRecord", () => {
+    it("should show dod records", async function () {
+      //given
+      const dodId = 1234
+      const { mock } = mockDoDRecordListApi()
+      //when
+      const wrapper = await mountWithFlushPromise(DoDDetail, `/dods/${dodId}`);
+      await flushPromises()
+      //then
+      expect(mock).toHaveBeenCalledTimes(1);
+      expect(wrapper.text()).toContain("2022-01-01");
+      expect(wrapper.text()).toMatch("30");
+      expect(wrapper.text()).toMatch("Add new feature");
+    })
     it("should create dod record", async function () {
       //given
       const dodId = 1234
+      const { mock } = mockDoDRecordListApi()
       const _mockCreateDoDRecordApi = mockCreateDoDRecordApi()
       //when
       const wrapper = await mountWithFlushPromise(DoDDetail, `/dods/${dodId}`);
@@ -35,6 +49,7 @@ describe("DoDList.vue", () => {
     it("validate required", async function () {
       //given
       const dodId = 1234
+      const { mock } = mockDoDRecordListApi()
       const _mockCreateDoDRecordApi = mockCreateDoDRecordApi()
       //when
       const wrapper = await mountWithFlushPromise(DoDDetail, `/dods/${dodId}`);
