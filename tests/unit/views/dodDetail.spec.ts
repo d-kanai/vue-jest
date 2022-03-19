@@ -1,6 +1,6 @@
 import { mountWithFlushPromise } from "@/../tests/unit/helper";
 import DoDDetail from "@/views/DoDDetail.vue";
-import DoDRecordForm from "@/components/DoDList/DoDRecordForm.vue";
+import DoDRecordForm from "@/components/DoD/DoDRecordForm.vue";
 import { mockCreateDoDRecordApi, mockDoDRecordListApi } from "@/../tests/unit/mockApi"
 import { flushPromises } from "@vue/test-utils";
 
@@ -22,7 +22,7 @@ describe("DoDDetailPage", () => {
       expect(wrapper.text()).toMatch("30");
       expect(wrapper.text()).toMatch("Add new feature");
     })
-    it("should create dod record", async function () {
+    it.only("should create dod record", async function () {
       //given
       const dodId = 1234
       const { mock } = mockDoDRecordListApi()

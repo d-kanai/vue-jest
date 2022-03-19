@@ -10,8 +10,8 @@
 </template>
 
 <script lang='ts'>
-import DoDListTable from "@/components/DoDList/DoDListTable.vue";
-import DoDForm from "@/components/DoDList/DoDForm.vue";
+import DoDListTable from "@/components/DoD/DoDListTable.vue";
+import DoDForm from "@/components/DoD/DoDForm.vue";
 import { createDoD } from "@/apis/DoDApi";
 import { useDoDList } from "@/hooks/useDoDList";
 import { defineComponent } from 'vue'

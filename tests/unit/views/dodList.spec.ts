@@ -1,7 +1,7 @@
 import "jest-canvas-mock";
 import { mountWithFlushPromise } from "@/../tests/unit/helper";
 import DoDList from "@/views/DoDList.vue";
-import DoDForm from "@/components/DoDList/DoDForm.vue";
+import DoDForm from "@/components/DoD/DoDForm.vue";
 import { mockDoDListApi, mockCreateDoDApi } from "@/../tests/unit/mockApi"
 
 describe("DoDList.vue", () => {
