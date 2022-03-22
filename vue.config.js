@@ -1,4 +1,4 @@
 module.exports = {
-  publicPath: '/dod-viewer/'
+  publicPath: '/vue-jest-practice/'
 }
 
