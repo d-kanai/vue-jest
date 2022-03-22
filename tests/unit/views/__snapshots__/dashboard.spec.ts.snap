@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`useDoDListLineChart should find computed ChartData From DoDListAPI 1`] = `
+<div>
+  <section
+    class="section"
+  >
+    <h3
+      class="subtitle"
+    >
+      Dashboard
+    </h3>
+    
+    
+  </section>
+</div>
+`;
+
 exports[`useDoDListLineChart snapshot 1`] = `
 <div>
   <section

@@ -1,28 +1,32 @@
 import { DoDRecord, DoDRecordList, DoDList, DoD } from "@/apis/DoDApi";
 import * as api from "@/apis/DoDApi";
 
-export function mockDoDListApi() {
+export function mockDoDListApi(items?:any) {
+  let _items = [
+    {
+      id: 1,
+      name: "Long Method Mock",
+      data: [
+        { id: 1, date: "2022-01-01", value: 10, comment: "something" },
+        { id: 2, date: "2022-01-02", value: 20, comment: "something" },
+        { id: 3, date: "2022-01-03", value: 30, comment: "something" },
+      ],
+    },
+    {
+      id: 2,
+      name: "Coverage Mock",
+      data: [
+        { id: 1, date: "2022-01-01", value: 81, comment: "something" },
+        { id: 2, date: "2022-01-02", value: 80, comment: "something" },
+        { id: 3, date: "2022-01-03", value: 90, comment: "something" },
+      ],
+    },
+  ]
+  if(items) {
+    _items = items
+  }
   const response = {
-    items: [
-      {
-        id: 1,
-        name: "Long Method Mock",
-        data: [
-          { id: 1, date: "2022-01-01", value: 10, comment: "something" },
-          { id: 2, date: "2022-01-02", value: 20, comment: "something" },
-          { id: 3, date: "2022-01-03", value: 30, comment: "something" },
-        ],
-      },
-      {
-        id: 2,
-        name: "Coverage Mock",
-        data: [
-          { id: 1, date: "2022-01-01", value: 81, comment: "something" },
-          { id: 2, date: "2022-01-02", value: 80, comment: "something" },
-          { id: 3, date: "2022-01-03", value: 90, comment: "something" },
-        ],
-      },
-    ],
+    items: _items,
   } as DoDList;
   jest.spyOn(api, "findDoDList").mockResolvedValueOnce(response);
   return response;

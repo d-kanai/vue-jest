@@ -7,15 +7,20 @@ export const useDoDListLineChart = () => {
 
   const chartDataList = computed(() => {
     return rawData.value.items.map((item) => {
-      const chartData = {
-        labels: item.data.map((row) => row.date),
-        datasets: [
-          {
-            label: item.name,
-            data: item.data.map((row) => row.value),
-          },
-        ],
-      };
+      let chartData:any
+      if(!item.data) {
+        chartData = {}
+      } else {
+        chartData = {
+          labels: item.data.map((row) => row.date),
+          datasets: [
+            {
+              label: item.name,
+              data: item.data.map((row) => row.value),
+            },
+          ],
+        };
+      }
       const { lineChartProps } = useLineChart({ chartData: chartData });
       return lineChartProps.value;
     });
