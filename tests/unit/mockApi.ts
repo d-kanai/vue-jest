@@ -16,9 +16,9 @@ export function mockDoDListApi(items?:any) {
       id: 2,
       name: "Coverage Mock",
       data: [
-        { id: 1, date: "2022-01-01", value: 81, comment: "something" },
-        { id: 2, date: "2022-01-02", value: 80, comment: "something" },
-        { id: 3, date: "2022-01-03", value: 90, comment: "something" },
+        { id: 1, date: "2022-01-01", value: 40, comment: "something" },
+        { id: 2, date: "2022-01-02", value: 50, comment: "something" },
+        { id: 3, date: "2022-01-03", value: 60, comment: "something" },
       ],
     },
   ]
