@@ -1,4 +1,5 @@
 module.exports = {
-  publicPath: '/vue-jest-practice/'
+  //for production build
+  // publicPath: '/vue-jest-practice/'
 }
 
