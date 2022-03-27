@@ -1,24 +1,6 @@
 <template>
   <div>
-    <div class="modal" :class="{'is-active': modal.isActive.value}">
-      <div class="modal-background"></div>
-      <div class="modal-content">
-        <div class="columns m-5">
-          <div class="column">
-            <DoDListTable :dodList="dodList" @selectDoD="selectDoD" />
-            <hr />
-            <DoDForm @onSubmit="onDoDSubmit" />
-          </div>
-          <div class="column">
-            <DoDRecordListTable :dodRecordList="dodRecordList" />
-            <hr />
-            <DoDRecordForm @onSubmit="onDoDRecordSubmit" />
-          </div>
-        </div>
-      </div>
-      <button @click="modal.close" class="modal-close is-large" aria-label="close"></button>
-    </div>
-    <Button @click="modal.open" label="Data Controll" />
+    <DoDModal />
     <section class="section">
       <h3 class="subtitle">Dashboard</h3>
       <div v-for="chartData in chartDataList" :key="chartData.label">
@@ -29,46 +11,22 @@
 </template>
 
 <script lang="ts">
-import DoDRecordListTable from "@/components/DoD/DoDRecordListTable.vue";
-import DoDRecordForm from "@/components/DoD/DoDRecordForm.vue";
-import { useModal } from "@/hooks/useModal"
-import { useDoDRecordList } from "@/hooks/useDoDRecordList"
-import { createDoDRecord } from "@/apis/DoDApi";
-import DoDListTable from "@/components/DoD/DoDListTable.vue";
-import { useDoDList } from "@/hooks/useDoDList";
 import { LineChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
 import { useDoDListLineChart } from "@/hooks/useDoDListLineChart";
 import { defineComponent } from 'vue'
-import { ref } from "vue";
-import DoDForm from "@/components/DoD/DoDForm.vue";
 import Button from "@/components/atoms/Button.vue";
-import { createDoD } from "@/apis/DoDApi";
+import DoDModal from "@/components/DoD/DoDModal.vue";
 
 Chart.register(...registerables);
 
 export default defineComponent({
   name: "Dashboard",
-  components: { DoDRecordListTable, DoDRecordForm,  LineChart, DoDForm, DoDListTable, Button },
+  components: { LineChart, DoDModal, Button },
   setup() {
-    const dodList = useDoDList();
-    const { chartDataList } = useDoDListLineChart();
-    const {dodRecordList, selectDoD, dodId} = useDoDRecordList();
-    const modal = useModal()
+    const { chartDataList } = useDoDListLineChart()
     return {
-      dodList,
-      onDoDSubmit: async (formData:any) => {
-        const dod = await createDoD(formData);
-        dodList.value.items.push(dod);
-      },
-      dodRecordList,
-      selectDoD: selectDoD,
-      onDoDRecordSubmit: async (formData:any) => {
-        const dodRecord = await createDoDRecord({ ...formData, dodId: dodId.value });
-        dodRecordList.value.items.push(dodRecord);
-      },
       chartDataList,
-      modal,
     };
 
   },
