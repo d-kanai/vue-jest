@@ -1,11 +1,12 @@
 import { findDoDRecordList, DoDRecordList } from "@/apis/DoDApi";
 import { ref } from "vue";
 
-export const useDoDRecordList = (dodId: number) => {
+export const useDoDRecordList = () => {
   const dodRecordList = ref({} as DoDRecordList);
-  const load = async () => {
-    dodRecordList.value = await findDoDRecordList(dodId);
+  const dodId = ref(0);
+  const selectDoD = async (id:number) => {
+    dodRecordList.value = await findDoDRecordList(id);
+    dodId.value = id
   };
-  load();
-  return dodRecordList;
+  return {dodRecordList, selectDoD, dodId};
 };

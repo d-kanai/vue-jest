@@ -6,14 +6,6 @@ import Dashboard from "@/views/Dashboard.vue";
 import { mockDoDListApi } from "@/../tests/unit/mockApi"
 
 describe("useDoDListLineChart", () => {
-  it("snapshot", async () => {
-    //given
-    mockDoDListApi();
-    //when
-    const wrapper = await mountWithFlushPromise(Dashboard);
-    //then
-    expect(wrapper.element).toMatchSnapshot();
-  });
   it("should find computed ChartData From DoDListAPI", async () => {
     //given
     mockDoDListApi();

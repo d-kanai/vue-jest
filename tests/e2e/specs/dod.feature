@@ -6,13 +6,14 @@ Feature: DoD
       |Long Method|
       |Coverage|
     When I visit to "/"
-    And I click "DoD"
+    And I click "Data Controll"
     Then I see "Long Method"
     And I see "Coverage"
 
   @focus
   Scenario: Create DoD Item
-    Given I visit to "/dods"
+    Given I visit to "/"
+    And I click "Data Controll"
     When I fill in DoD info
       |name|Long Method|
     And I click "Create DoD"
@@ -22,7 +23,8 @@ Feature: DoD
   Scenario: Create DoD Record
     Given There are DoD items
       |Long Method|
-    And I visit to "/dods"
+    And I visit to "/"
+    And I click "Data Controll"
     When I click "Long Method"
     And I fill in DoD Record info for "Long Method"
       |date|2022-01-01|

@@ -1,5 +1,5 @@
 <template>
-  <table class="table">
+  <table id="dodRecord" class="table">
     <thead>
       <tr>
         <th>ID</th>
@@ -24,7 +24,7 @@ export default defineComponent({
   name: "DoDRecordListTable",
   props: {
     dodRecordList: {},
-  },
+  }
 });
 </script>
 <style></style>

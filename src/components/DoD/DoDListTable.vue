@@ -10,21 +10,28 @@
       <tr v-for="dod in dodList.items" :key="dod">
         <td>{{ dod.id }}</td>
         <td>
-        <router-link :to="{ name: 'DoDDetail', params: { id: dod.id } }">
-          {{ dod.name }}
-        </router-link>
+          <a @click="selectDoD(dod.id)" href="#">{{dod.name}}</a>
         </td>
       </tr>
     </tbody>
   </table>
 </template>
-<script lant='ts'>
+<script lang='ts'>
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: "DoDListTable",
   props: {
-    dodList: {},
+    dodList: {}
   },
+  setup(props, context) {
+    return {
+      selectDoD: (dodId:number) => {
+        context.emit("selectDoD", dodId)
+      }
+
+    }
+
+  }
 });
 </script>
 <style></style>
