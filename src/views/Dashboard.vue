@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="modal" :class="{'is-active': modalIsActive}">
+    <div class="modal" :class="{'is-active': modal.isActive.value}">
       <div class="modal-background"></div>
       <div class="modal-content">
         <div class="columns">
@@ -16,9 +16,9 @@
           </div>
         </div>
       </div>
-      <button @click="closeModal" class="modal-close is-large" aria-label="close"></button>
+      <button @click="modal.close" class="modal-close is-large" aria-label="close"></button>
     </div>
-    <Button @click="openModal" label="Data Controll" />
+    <Button @click="modal.open" label="Data Controll" />
     <section class="section">
       <h3 class="subtitle">Dashboard</h3>
       <div v-for="chartData in chartDataList" :key="chartData.label">
@@ -31,6 +31,7 @@
 <script lang="ts">
 import DoDRecordListTable from "@/components/DoD/DoDRecordListTable.vue";
 import DoDRecordForm from "@/components/DoD/DoDRecordForm.vue";
+import { useModal } from "@/hooks/useModal"
 import { useDoDRecordList } from "@/hooks/useDoDRecordList"
 import { createDoDRecord } from "@/apis/DoDApi";
 import DoDListTable from "@/components/DoD/DoDListTable.vue";
@@ -51,15 +52,9 @@ export default defineComponent({
   components: { DoDRecordListTable, DoDRecordForm,  LineChart, DoDForm, DoDListTable, Button },
   setup() {
     const dodList = useDoDList();
-    const modalIsActive = ref(false)
     const { chartDataList } = useDoDListLineChart();
-    const openModal = () => {
-      modalIsActive.value = true
-    }
-    const closeModal = () => {
-      modalIsActive.value = false
-    }
     const {dodRecordList, selectDoD, dodId} = useDoDRecordList();
+    const modal = useModal()
     return {
       dodList,
       onSubmit: async (formData:any) => {
@@ -73,9 +68,7 @@ export default defineComponent({
         dodRecordList.value.items.push(dodRecord);
       },
       chartDataList,
-      modalIsActive,
-      openModal,
-      closeModal,
+      modal,
     };
 
   },
