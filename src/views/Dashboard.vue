@@ -3,11 +3,11 @@
     <div class="modal" :class="{'is-active': modal.isActive.value}">
       <div class="modal-background"></div>
       <div class="modal-content">
-        <div class="columns">
+        <div class="columns m-5">
           <div class="column">
             <DoDListTable :dodList="dodList" @selectDoD="selectDoD" />
             <hr />
-            <DoDForm @onSubmit="onSubmit" />
+            <DoDForm @onSubmit="onDoDSubmit" />
           </div>
           <div class="column">
             <DoDRecordListTable :dodRecordList="dodRecordList" />
@@ -57,7 +57,7 @@ export default defineComponent({
     const modal = useModal()
     return {
       dodList,
-      onSubmit: async (formData:any) => {
+      onDoDSubmit: async (formData:any) => {
         const dod = await createDoD(formData);
         dodList.value.items.push(dod);
       },

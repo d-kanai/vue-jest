@@ -43,9 +43,10 @@
 </template>
 <script lang='ts'>
 import { defineComponent } from 'vue'
+import Button from "@/components/atoms/Button.vue";
 export default defineComponent({
   name: "Header",
-  components: {},
+  components: {Button},
   props: { },
 });
 </script>
