@@ -21,44 +21,59 @@
           Clean
         </div>
       </div>
-      <article class="panel is-warning">
-        <p class="panel-heading">
-          Code Issue
-        </p>
-        <div class="panel-block">
-          <p class="control has-icons-left">
-            <input class="input is-warning" type="text" placeholder="Search">
-            <span class="icon is-left">
-              <i class="fas fa-search" aria-hidden="true"></i>
-            </span>
-          </p>
+      <div v-if="this.focus === 'test'" >
+        <div class="zen">
+          <p>Focus Specification.</p>
         </div>
-        <a v-for="issue in issues" :key="issue" class="panel-block is-active">
-          <span class="panel-icon">
-            <i class="fas fa-book" aria-hidden="true"></i>
-          </span>
-          {{issue.name}}
-        </a>
-      </article>
-      <article class="panel is-info">
-        <p class="panel-heading">
-          Refactoring Idea
-        </p>
-        <div class="panel-block">
-          <p class="control has-icons-left">
-            <input class="input is-info" type="text" placeholder="Search">
-            <span class="icon is-left">
-              <i class="fas fa-search" aria-hidden="true"></i>
-            </span>
-          </p>
+      </div>
+      <div v-if="this.focus === 'code'" >
+        <div class="zen">
+          <p>Just Make It Pass.</p>
         </div>
-        <a v-for="issue in issues" :key="issue" class="panel-block is-active">
-          <span class="panel-icon">
-            <i class="fas fa-book" aria-hidden="true"></i>
-          </span>
-          {{issue.name}}
-        </a>
-      </article>
+      </div>
+      <div v-if="this.focus === 'refactoring'" >
+        <div class="zen refactoring">
+          <p>Make It Clean. Save Knowdlege to Code.</p>
+        </div>
+        <article class="panel is-info">
+          <p class="panel-heading">
+            Code Issue
+          </p>
+          <div class="panel-block">
+            <p class="control has-icons-left">
+              <input class="input is-info" type="text" placeholder="Search">
+              <span class="icon is-left">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </span>
+            </p>
+          </div>
+          <a v-for="issue in issues" :key="issue" class="panel-block is-active">
+            <span class="panel-icon">
+              <i class="fas fa-book" aria-hidden="true"></i>
+            </span>
+            {{issue.name}}
+          </a>
+        </article>
+        <article class="panel is-info">
+          <p class="panel-heading">
+            Refactoring Idea
+          </p>
+          <div class="panel-block">
+            <p class="control has-icons-left">
+              <input class="input is-info" type="text" placeholder="Search">
+              <span class="icon is-left">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </span>
+            </p>
+          </div>
+          <a v-for="issue in issues" :key="issue" class="panel-block is-active">
+            <span class="panel-icon">
+              <i class="fas fa-book" aria-hidden="true"></i>
+            </span>
+            {{issue.name}}
+          </a>
+        </article>
+      </div>
     </div>
   </div>
 </template>
@@ -147,5 +162,24 @@ export default defineComponent({
   &:focus {
     outline-color: #2980b9;
   }
+}
+.zen {
+  height: 400px;
+  font-weight: bold;
+  font-family: serif;
+  font-size: 50px;
+  color: grey;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.zen.refactoring {
+  height: 100%;
+  font-weight: bold;
+  font-family: serif;
+  font-size: 20px;
+  color: grey;
 }
 </style>
