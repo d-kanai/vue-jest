@@ -1,7 +1,7 @@
 <template>
   <div class='content'>
     <div>
-      <div class="focus columns is-mobile">
+      <div class="focus-panel columns is-mobile">
         <div 
           @keydown="(e) => onFocusChange(e, 'test')"
           v-bind:class="{current: this.focus === 'test'}"
@@ -21,58 +21,60 @@
           Clean
         </div>
       </div>
-      <div v-if="this.focus === 'test'" >
-        <div class="zen">
-          <p>Focus Specification.</p>
-        </div>
-      </div>
-      <div v-if="this.focus === 'code'" >
-        <div class="zen">
-          <p>Just Make It Pass.</p>
-        </div>
-      </div>
-      <div v-if="this.focus === 'refactoring'" >
-        <div class="zen refactoring">
-          <p>Make It Clean. Save Knowdlege to Code.</p>
-        </div>
-        <article class="panel is-info">
-          <p class="panel-heading">
-            Code Issue
-          </p>
-          <div class="panel-block">
-            <p class="control has-icons-left">
-              <input class="input is-info" type="text" placeholder="Search">
-              <span class="icon is-left">
-                <i class="fas fa-search" aria-hidden="true"></i>
-              </span>
-            </p>
+      <div class="focus-tool">
+        <div class="focus-tool-item" v-if="this.focus === 'test'">
+          <div class="zen">
+            <p>Focus Specification.</p>
           </div>
-          <a v-for="issue in issues" :key="issue" class="panel-block is-active">
-            <span class="panel-icon">
-              <i class="fas fa-book" aria-hidden="true"></i>
+        </div>
+        <div class="focus-tool-item" v-if="this.focus === 'code'" >
+          <div class="zen">
+            <p>Just Make It Pass.</p>
+          </div>
+        </div>
+        <div class="focus-tool-item" v-if="this.focus === 'refactoring'" >
+          <div class="zen refactoring">
+            <p>Make It Clean. Save Knowdlege to Code.</p>
+          </div>
+          <article class="panel is-info">
+            <p class="panel-heading">
+              Code Issue
+            </p>
+            <div class="panel-block">
+              <p class="control has-icons-left">
+                <input class="input is-info" type="text" placeholder="Search">
+                <span class="icon is-left">
+                  <i class="fas fa-search" aria-hidden="true"></i>
+                </span>
+              </p>
+            </div>
+            <a v-for="issue in issues" :key="issue" class="panel-block is-active">
+              <span class="panel-icon">
+                <i class="fas fa-book" aria-hidden="true"></i>
+              </span>
+              {{issue.name}}
+            </a>
+          </article>
+          <article class="panel is-info">
+            <p class="panel-heading">
+              Refactoring Idea
+            </p>
+            <div class="panel-block">
+              <p class="control has-icons-left">
+                <input class="input is-info" type="text" placeholder="Search">
+                <span class="icon is-left">
+                  <i class="fas fa-search" aria-hidden="true"></i>
+                </span>
+              </p>
+            </div>
+            <a v-for="issue in issues" :key="issue" class="panel-block is-active">
+              <span class="panel-icon">
+                <i class="fas fa-book" aria-hidden="true"></i>
             </span>
             {{issue.name}}
           </a>
         </article>
-        <article class="panel is-info">
-          <p class="panel-heading">
-            Refactoring Idea
-          </p>
-          <div class="panel-block">
-            <p class="control has-icons-left">
-              <input class="input is-info" type="text" placeholder="Search">
-              <span class="icon is-left">
-                <i class="fas fa-search" aria-hidden="true"></i>
-              </span>
-            </p>
-          </div>
-          <a v-for="issue in issues" :key="issue" class="panel-block is-active">
-            <span class="panel-icon">
-              <i class="fas fa-book" aria-hidden="true"></i>
-            </span>
-            {{issue.name}}
-          </a>
-        </article>
+        </div>
       </div>
     </div>
   </div>
@@ -116,6 +118,13 @@ export default defineComponent({
 .content {
   margin: 10px;
 }
+.focus-tool-item {
+  opacity: 1;
+  &.current { //not work when add v-if
+    transition: all 10s;
+    opacity: 1;
+  }
+}
 .focus-item {
   color: white;
   margin: 1px;
@@ -134,7 +143,7 @@ export default defineComponent({
     outline: 2px;
     outline-style: solid;
   }
-  transition:background-color 0.2s ease-out 0.1s;
+  transition: 0.2s ease-out 0.1s;
 }
 .focus-test {
   background: rgb(255, 200, 200);
