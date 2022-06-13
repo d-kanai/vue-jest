@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Dashboard from "@/views/Dashboard.vue";
-import DoDDetail from "@/views/DoDDetail.vue";
+import Coding from "@/views/Coding.vue";
 import Todo from "@/views/Todo.vue";
 import TodoNew from "@/views/TodoNew.vue";
 
@@ -19,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/todo/:id",
     name: "Todo",
     component: Todo,
+  },
+  {
+    path: "/coding",
+    name: "Coding",
+    component: Coding,
   },
 ];
 
