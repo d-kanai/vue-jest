@@ -14,21 +14,19 @@
 import { LineChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
 import { useDoDListLineChart } from "@/hooks/useDoDListLineChart";
-import { defineComponent } from 'vue'
-import Button from "@/components/atoms/Button.vue";
+import { defineComponent } from "vue";
 import DoDModal from "@/components/DoD/DoDModal.vue";
 
 Chart.register(...registerables);
 
 export default defineComponent({
   name: "Dashboard",
-  components: { LineChart, DoDModal, Button },
+  components: { LineChart, DoDModal },
   setup() {
-    const { chartDataList } = useDoDListLineChart()
+    const { chartDataList } = useDoDListLineChart();
     return {
       chartDataList,
     };
-
   },
 });
 </script>
@@ -41,4 +39,3 @@ export default defineComponent({
   border-radius: 8px;
 }
 </style>
-

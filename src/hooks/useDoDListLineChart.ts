@@ -7,9 +7,9 @@ export const useDoDListLineChart = () => {
 
   const chartDataList = computed(() => {
     return rawData.value.items.map((item) => {
-      let chartData:any
-      if(!item.data) {
-        chartData = {}
+      let chartData: any;
+      if (!item.data) {
+        chartData = {};
       } else {
         chartData = {
           labels: item.data.map((row) => row.date),

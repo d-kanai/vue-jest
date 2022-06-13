@@ -54,7 +54,9 @@ describe("TodoList.vue", () => {
   it("update status", async () => {
     //given
     const mockData = mockTodoListApi();
-    const mockUpdateTodoStatusAPi = jest.spyOn(api, "updateTodoStatus").mockImplementation(jest.fn());
+    const mockUpdateTodoStatusAPi = jest
+      .spyOn(api, "updateTodoStatus")
+      .mockImplementation(jest.fn());
     //when
     const wrapper = await mountWithFlushPromise(TodoList);
     const checkbox = await wrapper.find('input[type="checkbox"]');

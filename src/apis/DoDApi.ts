@@ -17,7 +17,7 @@ export async function createDoDRecord(params: any): Promise<DoDRecord> {
 export async function findDoDRecordList(dodId: number): Promise<DoDRecordList> {
   console.log(`api call: findDoDRecordList: ${dodId}`);
   const dodRecordList = await http.get(`/dods/${dodId}/records`);
-  return dodRecordList.data
+  return dodRecordList.data;
 }
 export async function findDoDList(): Promise<DoDList> {
   console.log("api call: findDoDList");

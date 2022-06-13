@@ -10,28 +10,26 @@
       <tr v-for="dod in dodList.items" :key="dod">
         <td>{{ dod.id }}</td>
         <td>
-          <a @click="selectDoD(dod.id)" href="#">{{dod.name}}</a>
+          <a @click="selectDoD(dod.id)" href="#">{{ dod.name }}</a>
         </td>
       </tr>
     </tbody>
   </table>
 </template>
-<script lang='ts'>
-import { defineComponent } from 'vue'
+<script lang="ts">
+import { defineComponent } from "vue";
 export default defineComponent({
   name: "DoDListTable",
   props: {
-    dodList: {}
+    dodList: {},
   },
   setup(props, context) {
     return {
-      selectDoD: (dodId:number) => {
-        context.emit("selectDoD", dodId)
-      }
-
-    }
-
-  }
+      selectDoD: (dodId: number) => {
+        context.emit("selectDoD", dodId);
+      },
+    };
+  },
 });
 </script>
 <style></style>

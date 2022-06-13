@@ -1,7 +1,7 @@
 import { DoDRecord, DoDRecordList, DoDList, DoD } from "@/apis/DoDApi";
 import * as api from "@/apis/DoDApi";
 
-export function mockDoDListApi(items?:any) {
+export function mockDoDListApi(items?: any) {
   let _items = [
     {
       id: 1,
@@ -21,9 +21,9 @@ export function mockDoDListApi(items?:any) {
         { id: 3, date: "2022-01-03", value: 60, comment: "something" },
       ],
     },
-  ]
-  if(items) {
-    _items = items
+  ];
+  if (items) {
+    _items = items;
   }
   const response = {
     items: _items,
@@ -39,27 +39,38 @@ export function mockDoDRecordListApi() {
         id: 1,
         date: "2022-01-01",
         value: 10,
-        comment: 'Add new feature'
+        comment: "Add new feature",
       },
       {
         id: 2,
         date: "2022-01-02",
         value: 20,
-        comment: 'Add new feature 2'
+        comment: "Add new feature 2",
       },
-
     ],
   } as DoDRecordList;
-  const mock = jest.spyOn(api, "findDoDRecordList").mockResolvedValueOnce(response);
-  return {mock, response};
+  const mock = jest
+    .spyOn(api, "findDoDRecordList")
+    .mockResolvedValueOnce(response);
+  return { mock, response };
 }
 
 export function mockCreateDoDApi() {
-    const response = new Promise<DoD>((resolve, _) => { resolve({id: 1, name: "Long Method", data:[]}); });
-    return jest.spyOn(api, "createDoD").mockResolvedValueOnce(response);
+  const response = new Promise<DoD>((resolve, _) => {
+    resolve({ id: 1, name: "Long Method", data: [] });
+  });
+  return jest.spyOn(api, "createDoD").mockResolvedValueOnce(response);
 }
 
 export function mockCreateDoDRecordApi() {
-    const response = new Promise<DoDRecord>((resolve, _) => { resolve({id: 1, dodId: 100, date: "2022-01-01", value: 30, comment: 'Add new feature'}); });
-    return jest.spyOn(api, "createDoDRecord").mockResolvedValueOnce(response);
+  const response = new Promise<DoDRecord>((resolve, _) => {
+    resolve({
+      id: 1,
+      dodId: 100,
+      date: "2022-01-01",
+      value: 30,
+      comment: "Add new feature",
+    });
+  });
+  return jest.spyOn(api, "createDoDRecord").mockResolvedValueOnce(response);
 }

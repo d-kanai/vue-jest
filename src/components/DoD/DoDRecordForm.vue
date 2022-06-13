@@ -1,8 +1,20 @@
 <template>
   <form id="dodRecordForm" @submit="onSubmit">
-    <TextField v-model="formData.date.value" label="date" :error="errors.date" />
-    <TextField v-model="formData.value.value" label="value" :error="errors.value" />
-    <TextField v-model="formData.comment.value" label="comment" :error="errors.comment" />
+    <TextField
+      v-model="formData.date.value"
+      label="date"
+      :error="errors.date"
+    />
+    <TextField
+      v-model="formData.value.value"
+      label="value"
+      :error="errors.value"
+    />
+    <TextField
+      v-model="formData.comment.value"
+      label="comment"
+      :error="errors.comment"
+    />
     <Button label="Create DoD Record" />
   </form>
 </template>
@@ -13,14 +25,14 @@ import { useDoDRecordForm } from "@/hooks/useDoDRecordForm";
 export default {
   name: "DoDRecordForm",
   components: { Button, TextField },
-  props: { },
+  props: {},
   setup(props, context) {
     const { onSubmit, formData, errors } = useDoDRecordForm();
     return {
       formData,
       errors,
       onSubmit: onSubmit(async (formData) => {
-        context.emit("onSubmit", formData)
+        context.emit("onSubmit", formData);
       }),
     };
   },
